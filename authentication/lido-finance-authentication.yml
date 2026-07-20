@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.lido.fi/integrations/api
+docs: https://docs.lido.fi/integrations/api
+description: >-
+  Lido's three public REST APIs declare no securitySchemes in their OpenAPI documents and the docs
+  state plainly that "Lido APIs are strictly for read-only access". There are no API keys, no OAuth
+  flows, and no scope surface. The only credentialed surface in the Lido developer stack is The
+  Graph gateway API key required to query the Lido subgraph — that key is issued by The Graph, not
+  by Lido.
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
+  anonymous: true
+schemes: []
+apis:
+- api: Lido Ethereum API
+  base_url: https://eth-api.lido.fi
+  auth: none
+  note: Public, unauthenticated, read-only. No securitySchemes in openapi/lido-finance-eth-api-openapi-original.json.
+- api: Lido Withdrawals API
+  base_url: https://wq-api.lido.fi
+  auth: none
+  note: >-
+    Public, unauthenticated, read-only. An optional WQ-Request-Source header (widget | sdk | unknown)
+    is accepted for attribution, not authentication.
+- api: Lido Reward History Backend API
+  base_url: https://reward-history-backend.lido.fi
+  auth: none
+  note: Public, unauthenticated, read-only. Callers pass the subject address as a query parameter.
+- api: Lido Subgraph (GraphQL)
+  base_url: https://gateway-arbitrum.network.thegraph.com
+  auth: third-party-api-key
+  note: >-
+    Requires a The Graph Decentralized Network API key embedded in the gateway URL path
+    (/api/[api-key]/subgraphs/id/...). Issued and billed by The Graph, not by Lido.
+related:
+  conventions: conventions/lido-finance-conventions.yml
+  domain_security: security/lido-finance-domain-security.yml
