@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth Validators API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: Validators
+paths:
+  /v1/validators-info:
+    get:
+      operationId: ValidatorsController_validatorsV1
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatorsDto'
+      tags:
+      - Validators
+components:
+  schemas:
+    ValidatorsDto:
+      type: object
+      properties:
+        lastUpdatedAt:
+          type: number
+          example: 1658650005
+          description: ms time when data was last updated at
+        maxExitEpoch:
+          type: number
+          example: 1724856617
+          description: max exit epoch over all CL network
+        frameBalances:
+          type: object
+          example: '{}'
+          description: sum of balances Lido validators with withdrawable_epoch by frame
+        totalValidators:
+          type: number
+          example: 100000
+          description: total number of validators in network
+        currentFrame:
+          type: number
+          example: 100000
+          description: current frame
+      required:
+      - lastUpdatedAt
+      - maxExitEpoch
+      - frameBalances
+      - totalValidators
+      - currentFrame

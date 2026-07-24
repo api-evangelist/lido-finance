@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth Estimate API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: Estimate
+paths:
+  /v1/estimate-gas:
+    get:
+      operationId: EstimateController_requestTimeV1
+      parameters:
+      - name: token
+        required: true
+        in: query
+        description: Is token name
+        schema:
+          enum:
+          - STETH
+          - WSTETH
+          type: string
+      - name: requestCount
+        required: true
+        in: query
+        description: Is request count
+        schema:
+          minimum: 1
+          example: 1
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateDto'
+      tags:
+      - Estimate
+components:
+  schemas:
+    EstimateDto:
+      type: object
+      properties:
+        gasLimit:
+          type: number
+          example: 7777
+          description: Gas limit
+      required:
+      - gasLimit

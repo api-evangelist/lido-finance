@@ -1,0 +1,283 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth Request Time API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: Request Time
+paths:
+  /v1/request-time:
+    get:
+      operationId: RequestTimeController_requestTimeV1
+      parameters:
+      - name: WQ-Request-Source
+        in: header
+        description: Sources of withdrawal time requests
+        required: false
+        schema:
+          enum:
+          - widget
+          - sdk
+          - unknown
+          type: string
+      - name: amount
+        required: false
+        in: query
+        description: stETH amount to withdrawal
+        schema:
+          minimum: 0
+          example: '32'
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestTimeDto'
+      tags:
+      - Request Time
+  /v2/request-time:
+    get:
+      operationId: RequestTimeController_requestsTime
+      parameters:
+      - name: WQ-Request-Source
+        in: header
+        description: Sources of withdrawal time requests
+        required: false
+        schema:
+          enum:
+          - widget
+          - sdk
+          - unknown
+          type: string
+      - name: ids
+        required: true
+        in: query
+        description: Array of id withdrawal requests
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RequestTimeByRequestIdDto'
+        '400':
+          description: ids should be array of string id withdrawal requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseType'
+      tags:
+      - Request Time
+  /v2/request-time/calculate:
+    get:
+      operationId: RequestTimeController_calculateTime
+      parameters:
+      - name: WQ-Request-Source
+        in: header
+        description: Sources of withdrawal time requests
+        required: false
+        schema:
+          enum:
+          - widget
+          - sdk
+          - unknown
+          type: string
+      - name: amount
+        required: false
+        in: query
+        description: stETH amount to withdrawal
+        schema:
+          minimum: 0
+          example: '32'
+          type: number
+      responses:
+        '200':
+          description: Calculates time to withdrawal amount of stEth
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestTimeV2Dto'
+        '400':
+          description: Amount should be valid eth value or amount should not be
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseType'
+      tags:
+      - Request Time
+components:
+  schemas:
+    RequestTimeByRequestIdDto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestByIdInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
+    RequestTimeDto:
+      type: object
+      properties:
+        days:
+          type: number
+          example: 5
+          description: Maximum waiting days
+        stethLastUpdate:
+          type: number
+          example: 0
+          description: Queue ETH last update timestamp
+        validatorsLastUpdate:
+          type: number
+          example: 0
+          description: Validators last update timestamp
+        requests:
+          type: number
+          example: 10
+          description: Queue requests count
+        steth:
+          type: string
+          example: 0
+          description: Queue steth amount
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+      required:
+      - days
+      - stethLastUpdate
+      - validatorsLastUpdate
+      - requests
+      - steth
+      - status
+    RequestInfoDto:
+      type: object
+      properties:
+        finalizationIn:
+          type: number
+          example: 5
+          description: Possible waiting ms
+        finalizationAt:
+          type: string
+          example: '2023-10-04T15:14:24.202Z'
+          description: Possible finalization At
+        type:
+          type: string
+          example: buffer
+          description: Case of calculation
+          enum:
+          - buffer
+          - bunker
+          - vaultsBalance
+          - rewardsOnly
+          - validatorBalances
+          - requestTimestampMargin
+          - exitValidators
+      required:
+      - finalizationIn
+      - finalizationAt
+      - type
+    RequestByIdInfoDto:
+      type: object
+      properties:
+        finalizationIn:
+          type: number
+          example: 5
+          description: Possible waiting ms
+        finalizationAt:
+          type: string
+          example: '2023-10-04T15:14:24.202Z'
+          description: Possible finalization At
+        requestId:
+          type: string
+          example: 5
+          description: Request Id
+        requestedAt:
+          type: string
+          example: '2023-10-03T15:14:24.202Z'
+          description: Withdrawal requested at
+        type:
+          type: string
+          example: buffer
+          description: Case of calculation
+          enum:
+          - buffer
+          - bunker
+          - vaultsBalance
+          - rewardsOnly
+          - validatorBalances
+          - requestTimestampMargin
+          - exitValidators
+      required:
+      - finalizationIn
+      - finalizationAt
+      - requestId
+      - requestedAt
+      - type
+    RequestTimeV2Dto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
+    ErrorResponseType:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+          description: Http status code
+        message:
+          description: Array of validation error messages
+          type: array
+          items:
+            type: string
+        error:
+          type: string
+          description: Error text
+          example: Bad Request
+      required:
+      - statusCode
+      - message
+      - error

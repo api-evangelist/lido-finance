@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth NFT API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: NFT
+paths:
+  /v1/nft/{tokenId}:
+    get:
+      operationId: NFTController_nftMetaV1
+      parameters:
+      - name: tokenId
+        required: true
+        in: path
+        description: NFT token id
+        schema:
+          minimum: 0
+          type: number
+      - name: requested
+        required: true
+        in: query
+        description: Requested token amount
+        schema:
+          minimum: 0
+          example: '25000000000000000000'
+          type: string
+      - name: created_at
+        required: true
+        in: query
+        description: Created timestamp
+        schema:
+          minimum: 0
+          example: 1658650005
+          type: number
+      - name: finalized
+        required: false
+        in: query
+        description: Claimable token amount
+        schema:
+          minimum: 0
+          example: '25000000000000000000'
+          type: bigint
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTDto'
+      tags:
+      - NFT
+  /v1/nft/{tokenId}/image:
+    get:
+      operationId: NFTController_nftImageV1
+      parameters:
+      - name: tokenId
+        required: true
+        in: path
+        description: NFT token id
+        schema:
+          minimum: 0
+          type: number
+      - name: requested
+        required: true
+        in: query
+        description: Requested token amount
+        schema:
+          minimum: 0
+          example: '25000000000000000000'
+          type: string
+      - name: created_at
+        required: true
+        in: query
+        description: Created timestamp
+        schema:
+          minimum: 0
+          example: 1658650005
+          type: number
+      - name: finalized
+        required: false
+        in: query
+        description: Claimable token amount
+        schema:
+          minimum: 0
+          example: '25000000000000000000'
+          type: bigint
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NFTDto'
+      tags:
+      - NFT
+components:
+  schemas:
+    NFTDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My NFT
+          description: NFT name
+        description:
+          type: string
+          example: This is my first NFT
+          description: NFT description
+        image:
+          type: string
+          example: data:image/png;base64
+          description: NFT image data
+      required:
+      - name
+      - description
+      - image

@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth Swap rate for stETH and wstETH API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: Swap rate for stETH and wstETH
+paths:
+  /v1/swap/one-inch:
+    get:
+      operationId: SwapController_findOneInchRate
+      parameters:
+      - name: amount
+        required: false
+        in: query
+        description: Token amount in wei as BigNumber string
+        schema:
+          example: '1337'
+          type: string
+      - name: token
+        required: true
+        in: query
+        description: Token sybmol
+        schema:
+          enum:
+          - STETH
+          - WSTETH
+          - ETH
+          type: string
+      responses:
+        '200':
+          description: One inch swap rate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapResponse'
+      tags:
+      - Swap rate for stETH and wstETH
+  /v1/swap/jumper:
+    get:
+      operationId: SwapController_findJumperRate
+      parameters:
+      - name: amount
+        required: false
+        in: query
+        description: Token amount in wei as BigNumber string
+        schema:
+          example: '1337'
+          type: string
+      - name: token
+        required: true
+        in: query
+        description: Token sybmol
+        schema:
+          enum:
+          - STETH
+          - WSTETH
+          - ETH
+          type: string
+      responses:
+        '200':
+          description: Jumper swap rate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapResponse'
+      tags:
+      - Swap rate for stETH and wstETH
+components:
+  schemas:
+    SwapResponse:
+      type: object
+      properties:
+        rate:
+          type: number
+        toReceive:
+          type: string
+        fromAmount:
+          type: string
+      required:
+      - rate
+      - toReceive
+      - fromAmount

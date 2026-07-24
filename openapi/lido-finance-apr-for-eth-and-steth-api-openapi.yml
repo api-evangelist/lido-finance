@@ -1,0 +1,298 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: APR for Eth and stEth
+paths:
+  /v1/protocol/eth/apr:
+    get:
+      operationId: ProtocolController_findAPRforEth
+      parameters:
+      - name: startTime
+        required: false
+        in: query
+        description: unix timestamp
+        schema:
+          example: 1602674799
+          type: number
+      - name: endTime
+        required: false
+        in: query
+        description: unix timestamp
+        schema:
+          example: 1602674799
+          type: number
+      - name: page
+        required: false
+        in: query
+        schema:
+          default: 1
+          example: 1
+          type: number
+      - name: pageSize
+        required: false
+        in: query
+        schema:
+          default: 100
+          example: 100
+          type: number
+      responses:
+        '200':
+          description: APR for Eth
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/eth/price:
+    get:
+      operationId: ProtocolController_findEthPrice
+      parameters: []
+      responses:
+        '200':
+          description: Price for ETH
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/eth/apr/last:
+    get:
+      operationId: ProtocolController_findLastAPRforEth
+      parameters: []
+      responses:
+        '200':
+          description: Last DB APR for ETH
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolLastResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/steth/apr:
+    get:
+      operationId: ProtocolController_findAPRforSTETH
+      parameters:
+      - name: startTime
+        required: false
+        in: query
+        description: unix timestamp
+        schema:
+          example: 1602674799
+          type: number
+      - name: endTime
+        required: false
+        in: query
+        description: unix timestamp
+        schema:
+          example: 1602674799
+          type: number
+      - name: page
+        required: false
+        in: query
+        schema:
+          default: 1
+          example: 1
+          type: number
+      - name: pageSize
+        required: false
+        in: query
+        schema:
+          default: 100
+          example: 100
+          type: number
+      responses:
+        '200':
+          description: APR for stEth
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/steth/price:
+    get:
+      operationId: ProtocolController_findStEthPrice
+      parameters: []
+      responses:
+        '200':
+          description: Price for stETH
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/steth/stats:
+    get:
+      operationId: ProtocolController_findStethStats
+      parameters: []
+      responses:
+        '200':
+          description: Short stETH stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShortStatsResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/steth/apr/last:
+    get:
+      operationId: ProtocolController_findLastAPRforSTETH
+      parameters: []
+      responses:
+        '200':
+          description: Last DB APR for stEth
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtocolLastResponse'
+      tags:
+      - APR for Eth and stEth
+  /v1/protocol/steth/apr/sma:
+    get:
+      operationId: ProtocolController_findSmaAPRforSTETH
+      parameters: []
+      responses:
+        '200':
+          description: Simple Moving Average APR for 7 last days in db
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmaResponse'
+      tags:
+      - APR for Eth and stEth
+components:
+  schemas:
+    SmaApr:
+      type: object
+      properties:
+        aprs:
+          description: List of APR with timestamp for 7 days
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        smaApr:
+          type: number
+          example: 5.1
+          description: Simple Moving Average Apr for last 7 days in db
+      required:
+      - aprs
+      - smaApr
+    ShortStatsResponse:
+      type: object
+      properties:
+        uniqueAnytimeHolders:
+          type: string
+        uniqueHolders:
+          type: string
+        totalStaked:
+          type: string
+        marketCap:
+          type: number
+      required:
+      - uniqueAnytimeHolders
+      - uniqueHolders
+      - totalStaked
+      - marketCap
+    PriceResponse:
+      type: object
+      properties:
+        price:
+          type: number
+      required:
+      - price
+    Apr:
+      type: object
+      properties:
+        timeUnix:
+          type: number
+          example: 1665663911
+          description: Block unix timestamp in seconds
+        apr:
+          type: number
+          example: 5.1
+          description: Annual percentage rate
+      required:
+      - timeUnix
+      - apr
+    SmaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SmaApr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    ProtocolLastResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    ProtocolResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+      - meta
+      - pagination
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: number
+          example: 2
+          default: 1
+        pageSize:
+          type: number
+          example: 100
+          default: 100
+        itemCount:
+          type: number
+          example: 250
+        pageCount:
+          type: number
+          example: 3
+      required:
+      - page
+      - pageSize
+      - itemCount
+      - pageCount
+    ProtocolMeta:
+      type: object
+      properties:
+        symbol:
+          type: string
+          example: stETH
+        address:
+          type: string
+          example: '0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84'
+          description: Token contract address
+        chainId:
+          type: number
+          example: 1
+      required:
+      - symbol
+      - address
+      - chainId

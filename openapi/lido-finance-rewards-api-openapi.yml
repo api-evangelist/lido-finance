@@ -1,0 +1,148 @@
+openapi: 3.0.0
+info:
+  title: Lido Ethereum APR for Eth and stEth Rewards API
+  description: ''
+  version: 0.18.0
+  contact: {}
+servers: []
+tags:
+- name: Rewards
+paths:
+  /:
+    get:
+      operationId: RewardsController_rewards
+      parameters:
+      - name: address
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: currency
+        required: false
+        in: query
+        description: Fiat currency to use for calculations. USD by default.
+        schema:
+          enum:
+          - usd
+          - eur
+          - gbp
+          type: string
+      - name: skip
+        required: false
+        in: query
+        schema:
+          type: number
+      - name: limit
+        required: false
+        in: query
+        description: Maximum number of records to return. Max value is 10000.
+        schema:
+          type: number
+      - name: archiveRate
+        required: false
+        in: query
+        description: Use an exchange rate close to transaction time in curency calculations. True by default.
+        schema:
+          type: boolean
+      - name: onlyRewards
+        required: false
+        in: query
+        description: Include only rewards without transfers or stakings. False by default.
+        schema:
+          type: boolean
+      - name: sort
+        required: false
+        in: query
+        description: Sort of transactions by blockTime. Desc by default.
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      responses:
+        '200':
+          description: Transfers, stakings, Lido rewards for the address.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewards'
+        '400':
+          description: Required address is not provided, invalid or other inputs are invalid.
+        '500':
+          description: Subgraph limits were hit or application ran into a critical error.
+      tags:
+      - Rewards
+components:
+  schemas:
+    Rewards:
+      type: object
+      properties:
+        events:
+          example:
+          - sender: '0x123'
+            amount: '10000000000000'
+            shares: '9601198468359'
+            sharesBefore: '0'
+            sharesAfter: '9601198468359'
+            totalPooledEtherBefore: '1317010259140954469582432'
+            totalPooledEtherAfter: '1317010259150954469582432'
+            totalSharesBefore: '1264487688287792993319178'
+            totalSharesAfter: '1264487688297394191787537'
+            balanceAfter: '9999999999999'
+            block: '13320401'
+            blockTime: '1632915137'
+            transactionHash: '0x123'
+            transactionIndex: '104'
+            logIndex: '180'
+            type: staking
+            balance: '9999999999999'
+            change: '10000000000000'
+            currencyChange: '0.02796295413407497'
+            epochDays: '18899.480752314814814815'
+            epochFullDays: '18899'
+          - id: '0x123'
+            totalPooledEtherBefore: '3987129361461045331041509'
+            totalPooledEtherAfter: '3987566754071413331041509'
+            totalSharesBefore: '3725701046344994365194933'
+            totalSharesAfter: '3725741913672908436684643'
+            block: '14710991'
+            blockTime: '1651668004'
+            logIndex: '26'
+            type: reward
+            reportShares: '17316925755135907'
+            balance: '18533864938548509'
+            rewards: '1829686745885'
+            change: '1829686745885'
+            currencyChange: '0.005091279242946043946637935645'
+            epochDays: '19116.527824074074074074'
+            epochFullDays: '19116'
+            apr: '3.6021396525589111'
+          type: array
+          items:
+            type: string
+        totals:
+          type: object
+          example:
+            ethRewards: '245552874602011'
+            currencyRewards: '0.8708252194680570421607191945488'
+        averageApr:
+          type: string
+          example: '3.547336805048441041'
+        ethToStEthRatio:
+          type: number
+          example: 1.0009916423804406
+        stETHCurrencyPrice:
+          type: object
+          example:
+            eth: 0.99900934
+            usd: 2841.22
+        totalItems:
+          type: number
+          example: 100
+      required:
+      - events
+      - totals
+      - averageApr
+      - ethToStEthRatio
+      - stETHCurrencyPrice
+      - totalItems
