@@ -1,0 +1,53 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Lido Withdrawals API
+  version: 1.0.0
+extends: openapi/lido-finance-withdrawal-queue-openapi-original.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: >-
+  Enhancements derived from https://docs.lido.fi/integrations/api. Supplies the missing servers[]
+  and operation summaries without mutating the harvested original.
+actions:
+- target: $.info
+  update:
+    description: >-
+      Read-only REST API for the Lido on Ethereum withdrawal queue — estimates the waiting time for
+      a withdrawal request (by request id, for the current queue, or for a given stETH amount),
+      serves withdrawal-request NFT metadata and images, estimates gas, and reports validator info.
+      Unauthenticated.
+    x-apievangelist-slug: lido-finance
+    x-apievangelist-authentication: none
+    x-apievangelist-read-only: true
+- target: $
+  update:
+    servers:
+    - url: https://wq-api.lido.fi
+      description: Production (Ethereum mainnet)
+    - url: https://wq-api-hoodi.testnet.fi
+      description: Hoodi testnet
+- target: $.paths['/v1/request-time'].get
+  update:
+    summary: Estimate withdrawal wait time (v1).
+    deprecated: false
+    description: Superseded by GET /v2/request-time, which is the version documented on docs.lido.fi.
+- target: $.paths['/v2/request-time'].get
+  update:
+    summary: Estimate the withdrawal wait time for one or more withdrawal request ids.
+    description: 'Pass ids as repeated query parameters, e.g. ?ids=1&ids=2.'
+- target: $.paths['/v2/request-time/calculate'].get
+  update:
+    summary: Calculate the withdrawal wait time for the current queue, or for a given stETH amount.
+- target: $.paths['/v1/nft/{tokenId}'].get
+  update:
+    summary: Get ERC-721 metadata for a withdrawal-request NFT.
+    description: tokenId is the withdrawal request id issued by WithdrawalQueueERC721.
+- target: $.paths['/v1/nft/{tokenId}/image'].get
+  update:
+    summary: Get the image for a withdrawal-request NFT.
+- target: $.paths['/v1/estimate-gas'].get
+  update:
+    summary: Estimate gas for a withdrawal-related transaction.
+- target: $.paths['/v1/validators-info'].get
+  update:
+    summary: Get validator-set information used in withdrawal wait-time modelling.

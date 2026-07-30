@@ -1,0 +1,77 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from the three harvested OpenAPI documents in openapi/, the GraphQL schema in graphql/,
+  and https://docs.lido.fi/integrations/api. No compliance certifications are published by Lido
+  (it is a DAO-governed on-chain protocol, not a SaaS vendor), so no Compliance pointer is emitted.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: All three services publish OpenAPI 3.0.0 at /api-json (NestJS Swagger).
+- id: rest
+  conforms: true
+  evidence: Resource-oriented HTTPS endpoints returning application/json, GET-only.
+- id: graphql
+  conforms: true
+  evidence: Lido subgraph on The Graph exposes a GraphQL endpoint; schema captured at graphql/lido-finance-subgraph-schema.graphql.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: https://lido.fi/.well-known/security.txt returns 200 with Contact, Canonical, Policy and Preferred-Languages fields.
+- id: llms-txt
+  conforms: true
+  evidence: https://docs.lido.fi/llms.txt returns 200 with a conforming H1 + blockquote + link-list structure.
+- id: oauth2
+  conforms: false
+  evidence: No securitySchemes declared in any spec; APIs are unauthenticated read-only.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the NestJS { statusCode, message[], error } envelope, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No Sunset or Deprecation headers observed; deprecations announced in docs and LIPs.
+- id: idempotency-keys
+  conforms: false
+  evidence: Not applicable — all 18 documented operations are HTTP GET.
+- id: pagination
+  conforms: true
+  evidence: Reward History Backend implements documented skip/limit offset pagination.
+- id: asyncapi
+  conforms: false
+  evidence: No event, streaming or webhook surface is published for the REST APIs.
+- id: json-api
+  conforms: false
+- id: odata
+  conforms: false
+- id: fhir-r4
+  conforms: false
+- id: scim
+  conforms: false
+- id: fapi
+  conforms: false
+- id: psd2
+  conforms: false
+ethereum_standards:
+- id: erc-20
+  conforms: true
+  evidence: stETH and wstETH are ERC-20 tokens (stETH rebasing, wstETH value-accruing wrapper).
+- id: erc-721
+  conforms: true
+  evidence: WithdrawalQueueERC721 issues an NFT representing a position in the withdrawal queue; the Withdrawals API serves its metadata and image.
+- id: erc-2612
+  conforms: true
+  evidence: EIP712StETH helper contract provides ERC-2612 compliant signed approvals (permit).
+- id: eip-4788
+  conforms: true
+  evidence: PredepositGuarantee uses EIP-4788 withdrawal-credential proofs.
+- id: eip-7251
+  conforms: true
+  evidence: ValidatorConsolidationRequests builds calldata for EIP-7251 validator consolidation.
+security_program:
+  audits: https://github.com/lidofinance/audits
+  bug_bounty: https://immunefi.com/bug-bounty/lido/information/
+  certifications: []
+  note: >-
+    Lido publishes a public audit repository and runs an Immunefi bug bounty, but does not publish
+    SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP certifications or a trust center.

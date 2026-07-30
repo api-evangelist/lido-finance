@@ -1,0 +1,86 @@
+generated: '2026-07-19'
+method: searched
+source: live probe of /.well-known/ paths on every Lido host in apis.yml + OpenAPI servers
+description: >-
+  Well-known discovery surface probed across the Lido website, docs host and the three public API
+  hosts. Only the RFC 9116 security.txt on lido.fi returned 200; the OAuth/OIDC discovery documents
+  are absent by design — the Lido public APIs are unauthenticated, read-only endpoints.
+hosts:
+- host: https://lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: lido-finance-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://docs.lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://eth-api.lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://wq-api.lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://reward-history-backend.lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://stake.lido.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+llms_txt:
+  path: /llms.txt
+  status: 200
+  host: https://docs.lido.fi
+  file: ../llms/lido-finance-llms.txt

@@ -1,0 +1,26 @@
+{
+  "provider": "lido-finance",
+  "sources": [
+    "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "lido-finance-estimate-api-openapi.yml",
+    "lido-finance-nft-api-openapi.yml",
+    "lido-finance-request-time-api-openapi.yml",
+    "lido-finance-rewards-api-openapi.yml",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "lido-finance-validators-api-openapi.yml"
+  ],
+  "outputs": [
+    "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "lido-finance-estimate-api-openapi.yml",
+    "lido-finance-nft-api-openapi.yml",
+    "lido-finance-request-time-api-openapi.yml",
+    "lido-finance-rewards-api-openapi.yml",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "lido-finance-validators-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

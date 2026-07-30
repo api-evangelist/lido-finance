@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  openapi/lido-finance-withdrawal-queue-openapi-original.json,
+  openapi/lido-finance-reward-history-openapi-original.json,
+  openapi/lido-finance-eth-api-openapi-original.json
+format: nestjs-error-envelope
+rfc9457: false
+description: >-
+  Error catalog derived from the 4xx/5xx responses declared in Lido's three public OpenAPI
+  documents. Lido does not publish a standalone error reference page and does not use RFC 9457
+  application/problem+json — errors use the NestJS envelope declared as ErrorResponseType.
+envelope:
+  media_type: application/json
+  schema: ErrorResponseType
+  fields:
+    statusCode: HTTP status code (number)
+    message: Array of validation error messages (string[])
+    error: Error text, e.g. "Bad Request" (string)
+problems:
+- status: 400
+  title: Invalid withdrawal request ids
+  detail: ids should be array of string id withdrawal requests
+  schema: ErrorResponseType
+  remediation: Pass ids as repeated query parameters of string request ids, e.g. ?ids=1&ids=2.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#RequestTimeController_requestsTime
+- status: 400
+  title: Invalid withdrawal amount
+  detail: Amount should be valid eth value or amount should not be
+  schema: ErrorResponseType
+  remediation: Pass amount as a valid ETH value (e.g. amount=32) or omit it to calculate for the current queue.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#RequestTimeController_calculateTime
+- status: 400
+  title: Invalid or missing address
+  detail: Required address is not provided, invalid or other inputs are invalid.
+  remediation: Supply a valid Ethereum address in the required address query parameter; check currency, sort, skip and limit values.
+  source_operation: openapi/lido-finance-reward-history-openapi-original.json#RewardsController_rewards
+- status: 500
+  title: Subgraph limit or critical error
+  detail: Subgraph limits were hit or application ran into a critical error.
+  remediation: >-
+    Narrow the query window using skip/limit or onlyRewards=true and retry with backoff. This
+    signals an upstream indexing limit, not a caller rate limit.
+  source_operation: openapi/lido-finance-reward-history-openapi-original.json#RewardsController_rewards
+notes:
+- The Lido Ethereum API declares only 200 responses in its OpenAPI; no 4xx/5xx contract is published for it.
+- No decline-code or numeric error-code registry exists — Lido is not a payments/authorization provider.

@@ -1,0 +1,137 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  openapi/lido-finance-eth-api-openapi-original.json,
+  openapi/lido-finance-withdrawal-queue-openapi-original.json,
+  openapi/lido-finance-reward-history-openapi-original.json,
+  graphql/lido-finance-subgraph-schema.graphql
+description: >-
+  Entity graph derived from the components.schemas of Lido's three public OpenAPI documents plus the
+  subgraph schema. The REST APIs are read models over on-chain protocol state — there are no
+  writable resources and no id-prefix scheme; entities are keyed by Ethereum address, withdrawal
+  request id, or block/oracle report.
+identifiers:
+- name: address
+  form: Ethereum address (0x + 40 hex)
+  used_by: [Rewards]
+- name: requestId
+  form: Numeric withdrawal-queue request id
+  used_by: [RequestTimeByRequestIdDto, RequestInfoDto, NFTDto]
+- name: tokenId
+  form: ERC-721 token id of the withdrawal NFT — equal to the withdrawal request id
+  used_by: [NFTDto]
+- name: block / blockTime
+  form: Ethereum block number and unix epoch seconds
+  used_by: [Rewards.events, ProtocolResponse, SmaResponse]
+entities:
+- name: Apr
+  api: Lido Ethereum API
+  schema: Apr
+  description: A single APR datapoint for ETH or stETH at a point in time.
+- name: ProtocolResponse
+  api: Lido Ethereum API
+  schema: ProtocolResponse
+  description: A paginated series of APR datapoints plus protocol metadata.
+  relationships:
+  - has_many: Apr
+    via: data
+  - has_one: ProtocolMeta
+    via: meta
+  - has_one: Pagination
+    via: pagination
+- name: ProtocolLastResponse
+  api: Lido Ethereum API
+  schema: ProtocolLastResponse
+  description: The latest APR datapoint.
+  relationships:
+  - has_one: Apr
+    via: data
+  - has_one: ProtocolMeta
+    via: meta
+- name: SmaResponse
+  api: Lido Ethereum API
+  schema: SmaResponse
+  description: A 7-day simple-moving-average APR result.
+  relationships:
+  - has_one: SmaApr
+    via: data
+  - has_one: ProtocolMeta
+    via: meta
+- name: PriceResponse
+  api: Lido Ethereum API
+  schema: PriceResponse
+  description: Current ETH or stETH price.
+- name: ShortStatsResponse
+  api: Lido Ethereum API
+  schema: ShortStatsResponse
+  description: Short-form stETH protocol statistics (e.g. total supply / holders scale).
+- name: SwapResponse
+  api: Lido Ethereum API
+  schema: SwapResponse
+  description: stETH/wstETH swap rate quoted from 1inch or Jumper.
+- name: RequestTimeDto
+  api: Lido Withdrawals API
+  schema: RequestTimeDto
+  description: Estimated wait time for a withdrawal (v1 shape).
+- name: RequestTimeV2Dto
+  api: Lido Withdrawals API
+  schema: RequestTimeV2Dto
+  description: v2 wait-time result for one or many withdrawal requests.
+  relationships:
+  - has_many: RequestTimeByRequestIdDto
+    via: requests
+- name: RequestTimeByRequestIdDto
+  api: Lido Withdrawals API
+  schema: RequestTimeByRequestIdDto
+  description: Wait-time estimate keyed by withdrawal request id.
+  relationships:
+  - has_one: RequestInfoDto
+    via: requestInfo
+- name: RequestInfoDto
+  api: Lido Withdrawals API
+  schema: RequestInfoDto
+  description: Descriptive detail about a queued withdrawal request.
+- name: NFTDto
+  api: Lido Withdrawals API
+  schema: NFTDto
+  description: >-
+    ERC-721 metadata for a withdrawal-request NFT issued by WithdrawalQueueERC721; the tokenId is
+    the withdrawal request id, so the NFT and the queue entry are the same object viewed two ways.
+  relationships:
+  - belongs_to: RequestInfoDto
+    via: tokenId
+- name: EstimateDto
+  api: Lido Withdrawals API
+  schema: EstimateDto
+  description: Gas estimate for a withdrawal-related transaction.
+- name: ValidatorsDto
+  api: Lido Withdrawals API
+  schema: ValidatorsDto
+  description: Validator-set information used in wait-time modelling.
+- name: ErrorResponseType
+  api: Lido Withdrawals API
+  schema: ErrorResponseType
+  description: Shared error envelope. See errors/lido-finance-problem-types.yml.
+- name: Rewards
+  api: Lido Reward History Backend API
+  schema: Rewards
+  description: >-
+    All stETH interactions for one address plus derived daily reward accounting. Events carry
+    staking/transfer/rebase records with shares, totalPooledEther and totalShares before/after,
+    balance, change and fiat currencyChange.
+  relationships:
+  - belongs_to: address
+    via: address
+subgraph_entities:
+  source: graphql/lido-finance-subgraph-schema.graphql
+  examples:
+  - LidoConfig
+  - TotalReward
+  - OracleCompleted
+  - LidoTransfer
+  - LidoSubmission
+  - NodeOperatorSigningKey
+  note: >-
+    The subgraph indexes Lido contract events directly and is the richer historical model behind
+    the Reward History API's derived view.
+render: null

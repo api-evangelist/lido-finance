@@ -1,0 +1,79 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: >-
+  Derived from the 18 operations across the three harvested Lido OpenAPI documents. A search of
+  docs.lido.fi, the lidofinance GitHub org surface referenced in the docs, and the npm
+  @lidofinance scope found no official hosted or published MCP server as of this pass.
+description: >-
+  Candidate MCP tool surface for the Lido public APIs. Every operation is an unauthenticated GET,
+  which makes this an unusually clean read-only MCP surface — no credentials to broker, no
+  write-path consequences. Not published by Lido; this is an API Evangelist derivation.
+server:
+  name: lido-finance
+  transport: http
+  url: null
+  authentication: none
+tools:
+- name: get_eth_apr_series
+  description: Historical Ethereum staking APR series.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findAPRforEth
+- name: get_eth_price
+  description: Current ETH price.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findEthPrice
+- name: get_last_eth_apr
+  description: Latest Ethereum staking APR datapoint.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findLastAPRforEth
+- name: get_steth_apr_series
+  description: Historical stETH staking APR series.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findAPRforSTETH
+- name: get_steth_price
+  description: Current stETH price.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findStEthPrice
+- name: get_steth_stats
+  description: Short-form stETH protocol statistics.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findStethStats
+- name: get_last_steth_apr
+  description: Latest stETH staking APR datapoint.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findLastAPRforSTETH
+- name: get_steth_apr_sma
+  description: 7-day simple moving average of the stETH staking APR.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#ProtocolController_findSmaAPRforSTETH
+- name: get_one_inch_swap_rate
+  description: stETH/wstETH swap rate from 1inch.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#SwapController_findOneInchRate
+- name: get_jumper_swap_rate
+  description: stETH/wstETH swap rate from Jumper.
+  source_operation: openapi/lido-finance-eth-api-openapi-original.json#SwapController_findJumperRate
+- name: get_withdrawal_request_time_v1
+  description: Estimate withdrawal wait time (v1).
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#RequestTimeController_requestTimeV1
+- name: get_withdrawal_request_time
+  description: Estimate withdrawal wait time for one or more request ids.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#RequestTimeController_requestsTime
+- name: calculate_withdrawal_time
+  description: Calculate withdrawal wait time for the current queue or for a given stETH amount.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#RequestTimeController_calculateTime
+- name: get_withdrawal_nft_metadata
+  description: ERC-721 metadata for a withdrawal-request NFT.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#NFTController_nftMetaV1
+- name: get_withdrawal_nft_image
+  description: Image for a withdrawal-request NFT.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#NFTController_nftImageV1
+- name: estimate_withdrawal_gas
+  description: Gas estimate for a withdrawal-related transaction.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#EstimateController_requestTimeV1
+- name: get_validators_info
+  description: Validator-set information used in withdrawal wait-time modelling.
+  source_operation: openapi/lido-finance-withdrawal-queue-openapi-original.json#ValidatorsController_validatorsV1
+- name: get_reward_history
+  description: All stETH interactions and daily rewards for an Ethereum address.
+  source_operation: openapi/lido-finance-reward-history-openapi-original.json#RewardsController_rewards
+searched:
+  checked:
+  - https://docs.lido.fi/
+  - https://docs.lido.fi/llms.txt
+  - https://docs.lido.fi/integrations/api
+  - https://docs.lido.fi/integrations/sdk
+  - npm @lidofinance scope
+  result: no official MCP server published

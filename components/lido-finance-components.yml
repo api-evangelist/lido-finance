@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.lido.fi/integrations/sdk and https://ui.lido.fi
+description: >-
+  Lido ships one first-party client-side UI surface: the Lido UI Library, a React component library
+  used across Lido Finance front-ends and published for integrators who want Lido-styled components
+  in their own apps. It is documented in the docs "SDKs and UI libraries" page and browsable as a
+  Storybook.
+families:
+- name: Lido UI Library
+  kind: react-component-library
+  package: '@lidofinance/lido-ui'
+  loader: npm install @lidofinance/lido-ui
+  storybook: https://ui.lido.fi
+  repository: https://github.com/lidofinance/ui
+  docs: https://docs.lido.fi/integrations/sdk
+  target_clients: Those who want to use Lido UI components in their projects.
+  official: true
+- name: Lido Ethereum SDK Playground
+  kind: reference-application
+  repository: https://github.com/lidofinance/lido-ethereum-sdk
+  docs: https://lidofinance.github.io/lido-ethereum-sdk/
+  description: >-
+    A runnable playground app shipped in the SDK monorepo that exercises each SDK module (stake,
+    wrap, withdraw, rewards, stVault, dual governance) as a working front-end reference.
+  official: true
+hosted_surfaces:
+- name: Lido Staking Widget
+  url: https://stake.lido.fi/
+  description: Lido's own hosted staking front-end for ETH → stETH, wrapping and withdrawals.
+  embeddable: false
+notes:
+- The component surface is React-only; Lido publishes no web components or hosted embeddable iframes.
+- Component libraries are distinct from the SDKs catalogued in packages/lido-finance-packages.yml.

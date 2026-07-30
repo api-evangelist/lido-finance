@@ -1,0 +1,58 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Lido Ethereum API
+  version: 1.0.0
+extends: openapi/lido-finance-eth-api-openapi-original.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: >-
+  Enhancements derived from https://docs.lido.fi/integrations/api. The harvested document declares
+  an empty servers[] array and carries no operation summaries; this overlay supplies the production
+  and Hoodi testnet servers plus human-readable summaries without mutating the original.
+actions:
+- target: $.info
+  update:
+    description: >-
+      Read-only REST API exposing Lido protocol economics on Ethereum — ETH and stETH APR (latest,
+      historical series, and a 7-day simple moving average), ETH and stETH prices, short protocol
+      stats, and stETH/wstETH swap rates. Unauthenticated.
+    x-apievangelist-slug: lido-finance
+    x-apievangelist-authentication: none
+    x-apievangelist-read-only: true
+- target: $
+  update:
+    servers:
+    - url: https://eth-api.lido.fi
+      description: Production (Ethereum mainnet)
+    - url: https://eth-api-hoodi.testnet.fi
+      description: Hoodi testnet
+- target: $.paths['/v1/protocol/eth/apr'].get
+  update:
+    summary: Get the Ethereum staking APR series.
+- target: $.paths['/v1/protocol/eth/price'].get
+  update:
+    summary: Get the current ETH price.
+- target: $.paths['/v1/protocol/eth/apr/last'].get
+  update:
+    summary: Get the latest Ethereum staking APR datapoint.
+- target: $.paths['/v1/protocol/steth/apr'].get
+  update:
+    summary: Get the stETH staking APR series.
+- target: $.paths['/v1/protocol/steth/price'].get
+  update:
+    summary: Get the current stETH price.
+- target: $.paths['/v1/protocol/steth/stats'].get
+  update:
+    summary: Get short-form stETH protocol statistics.
+- target: $.paths['/v1/protocol/steth/apr/last'].get
+  update:
+    summary: Get the latest stETH staking APR datapoint.
+- target: $.paths['/v1/protocol/steth/apr/sma'].get
+  update:
+    summary: Get the 7-day simple moving average of the stETH staking APR.
+- target: $.paths['/v1/swap/one-inch'].get
+  update:
+    summary: Get the stETH/wstETH swap rate from 1inch.
+- target: $.paths['/v1/swap/jumper'].get
+  update:
+    summary: Get the stETH/wstETH swap rate from Jumper.

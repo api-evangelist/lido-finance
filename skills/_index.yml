@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: generated
+source: >-
+  Generated from the three harvested Lido OpenAPI documents in openapi/ plus
+  conventions/lido-finance-conventions.yml and errors/lido-finance-problem-types.yml. Every
+  operationId below was verified verbatim against its spec. Lido publishes no AGENTS.md or
+  first-party agent skills.
+description: >-
+  Packaged Agent Skills for Lido's three public, unauthenticated, read-only REST APIs — one per
+  marquee flow: reading staking yield, estimating a withdrawal, and reconciling reward history.
+skills:
+- file: lido-finance-track-staking-yield.md
+  name: Track Lido staking yield
+  api: openapi/lido-finance-eth-api-openapi-original.json
+  operations:
+  - ProtocolController_findLastAPRforSTETH
+  - ProtocolController_findSmaAPRforSTETH
+  - ProtocolController_findAPRforSTETH
+  - ProtocolController_findStEthPrice
+  - ProtocolController_findEthPrice
+  - ProtocolController_findStethStats
+- file: lido-finance-estimate-withdrawal-time.md
+  name: Estimate a Lido withdrawal wait time
+  api: openapi/lido-finance-withdrawal-queue-openapi-original.json
+  operations:
+  - RequestTimeController_calculateTime
+  - RequestTimeController_requestsTime
+  - NFTController_nftMetaV1
+  - NFTController_nftImageV1
+  - EstimateController_requestTimeV1
+  - ValidatorsController_validatorsV1
+- file: lido-finance-reconcile-reward-history.md
+  name: Reconcile a wallet's stETH reward history
+  api: openapi/lido-finance-reward-history-openapi-original.json
+  operations:
+  - RewardsController_rewards

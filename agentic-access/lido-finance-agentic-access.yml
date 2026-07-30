@@ -1,0 +1,195 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/lido-finance-eth-api-openapi-original.json, openapi/lido-finance-reward-history-openapi-original.json,
+  openapi/lido-finance-withdrawal-queue-openapi-original.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 18
+  by_action_class:
+    connected: 18
+  by_consequence:
+    read: 18
+  human_in_the_loop_required: 0
+operations:
+- path: /v1/protocol/eth/apr
+  method: get
+  operationId: ProtocolController_findAPRforEth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/eth/price
+  method: get
+  operationId: ProtocolController_findEthPrice
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/eth/apr/last
+  method: get
+  operationId: ProtocolController_findLastAPRforEth
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/steth/apr
+  method: get
+  operationId: ProtocolController_findAPRforSTETH
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/steth/price
+  method: get
+  operationId: ProtocolController_findStEthPrice
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/steth/stats
+  method: get
+  operationId: ProtocolController_findStethStats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/steth/apr/last
+  method: get
+  operationId: ProtocolController_findLastAPRforSTETH
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/protocol/steth/apr/sma
+  method: get
+  operationId: ProtocolController_findSmaAPRforSTETH
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/swap/one-inch
+  method: get
+  operationId: SwapController_findOneInchRate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/swap/jumper
+  method: get
+  operationId: SwapController_findJumperRate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /
+  method: get
+  operationId: RewardsController_rewards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/request-time
+  method: get
+  operationId: RequestTimeController_requestTimeV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/request-time
+  method: get
+  operationId: RequestTimeController_requestsTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/request-time/calculate
+  method: get
+  operationId: RequestTimeController_calculateTime
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/nft/{tokenId}
+  method: get
+  operationId: NFTController_nftMetaV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/nft/{tokenId}/image
+  method: get
+  operationId: NFTController_nftImageV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/estimate-gas
+  method: get
+  operationId: EstimateController_requestTimeV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/validators-info
+  method: get
+  operationId: ValidatorsController_validatorsV1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

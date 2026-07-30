@@ -1,0 +1,61 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/lidofinance/lido-ethereum-sdk/blob/main/packages/sdk/CHANGELOG.md
+description: >-
+  Lido publishes no dated changelog for the three public REST APIs — each service exposes only an
+  OpenAPI info.version (eth-api 0.18.0, withdrawals 0.26.0, reward-history 0.17.2). The maintained,
+  structured changelog in the Lido developer surface is the Lido Ethereum SDK's CHANGELOG.md, which
+  is the record captured here. Protocol-level changes are announced on blog.lido.fi and through
+  Lido Improvement Proposals.
+scheme: semver
+subject: Lido Ethereum SDK (@lidofinance/lido-ethereum-sdk)
+current_version: 4.8.0
+dated: false
+note: The SDK changelog is versioned but not dated; entries are ordered newest-first.
+entries:
+- version: 4.8.0
+  breaking: false
+  highlights:
+  - All contract instances support .encode and .prepare for encoding calls and preparing transactions without sending them.
+  - All ABIs exported with their types, optimized for TypeScript performance.
+  - Aligned with viem naming conventions — publicClient/walletClient replace rpcProvider/signerProvider.
+  - Older methods marked for deprecation but still supported for backward compatibility.
+  - Removed @ethersproject/bytes dependency in favour of viem utils.
+- version: 4.7.0
+  breaking: false
+  highlights:
+  - Added the StVault module.
+  - New shares methods including convertBatchSharesToSteth, getSharesByPooledEth, getPooledEthByShares.
+  - Updated stVault ABIs (StakingVault, VaultHub, VaultFactory, Dashboard, PredepositGuarantee, OperatorGrid, LazyOracle).
+- version: 4.6.0
+  breaking: false
+  highlights:
+  - wrapEth migrated from direct ETH transfers to calling stakeETH on the WstETHReferralStaker contract.
+  - wrapEth supports an optional referralAddress parameter.
+- version: 4.5.0
+  breaking: false
+  highlights:
+  - Added the Dual Governance module.
+- version: 4.4.0
+  breaking: false
+  highlights:
+  - Added Hoodi testnet support.
+- version: 4.3.0
+  breaking: false
+  highlights:
+  - Added Unichain and UnichainSepolia L2 chain support.
+- version: 4.2.0
+  breaking: true
+  highlights:
+  - Added Soneium and SoneiumMinato as separate L2 chains.
+  - Removed the Goerli chain.
+- version: 4.1.0
+  breaking: false
+  highlights:
+  - Gas-estimation helpers added across stake, wrap, withdraw and L2 modules.
+  - TransactionCallback can now be async and is awaited; SIGN stage can return a custom gas limit.
+  - requestWithdrawalWithPermit accepts a custom deadline for the permit signature.
+related:
+  lifecycle: lifecycle/lido-finance-lifecycle.yml
+  packages: packages/lido-finance-packages.yml
+  blog: https://blog.lido.fi/

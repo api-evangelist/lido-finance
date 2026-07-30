@@ -1,0 +1,40 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Lido Reward History Backend API
+  version: 1.0.0
+extends: openapi/lido-finance-reward-history-openapi-original.json
+x-generated: '2026-07-19'
+x-method: generated
+x-source: >-
+  Enhancements derived from https://docs.lido.fi/integrations/api, which documents the query
+  parameters and pagination contract in prose. Supplies servers[] and an operation summary without
+  mutating the harvested original.
+actions:
+- target: $.info
+  update:
+    description: >-
+      Read-only REST API returning all stETH interactions for an Ethereum address and calculating
+      that address's daily stETH rewards, optionally denominated in USD/EUR/GBP using either
+      historical or current exchange rates. Unauthenticated. Single endpoint at /.
+    x-apievangelist-slug: lido-finance
+    x-apievangelist-authentication: none
+    x-apievangelist-read-only: true
+- target: $
+  update:
+    servers:
+    - url: https://reward-history-backend.lido.fi
+      description: Production (Ethereum mainnet)
+    - url: http://reward-history-backend-hoodi.testnet.fi
+      description: Hoodi testnet (documented over http)
+- target: $.paths['/'].get
+  update:
+    summary: Get all stETH interactions and daily rewards for an address.
+    description: >-
+      The only required query parameter is address. Optional: currency (usd|eur|gbp, default usd),
+      archiveRate (true|false, default true — use an exchange rate close to the transaction time),
+      onlyRewards (true|false, default false — exclude transfers and stakings), sort (asc|desc,
+      default desc by blockTime), and skip/limit for offset pagination
+      (skip:0 limit:100 = page 1, skip:100 limit:100 = page 2).
+    x-apievangelist-pagination:
+      style: offset
+      params: [skip, limit]

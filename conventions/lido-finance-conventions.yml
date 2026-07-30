@@ -1,0 +1,101 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.lido.fi/integrations/api plus derivation from the three harvested OpenAPI documents
+  in openapi/.
+description: >-
+  Cross-cutting request/response semantics shared by the Lido public REST APIs. All three services
+  are NestJS applications that publish Swagger at /api and the raw document at /api-json; all are
+  GET-only and unauthenticated.
+
+api_style: REST over HTTPS, JSON responses, GET-only
+base_urls:
+  eth_api: https://eth-api.lido.fi
+  withdrawals_api: https://wq-api.lido.fi
+  reward_history_api: https://reward-history-backend.lido.fi
+
+authentication:
+  scheme: none
+  detail: authentication/lido-finance-authentication.yml
+  note: '"Lido APIs are strictly for read-only access" — docs.lido.fi/integrations/api'
+
+idempotency:
+  supported: not-applicable
+  reason: >-
+    Every documented operation across the three APIs is an HTTP GET. There are no state-changing
+    endpoints, so no idempotency-key contract exists or is needed. State changes happen on-chain via
+    the Lido contracts / SDK, where Ethereum transaction nonces provide the replay guarantee.
+
+pagination:
+  style: offset
+  applies_to: Lido Reward History Backend API (GET /)
+  request_params:
+    skip: Number of data items to skip.
+    limit: Maximum number of data items to return.
+  documented_example: 'skip: 0, limit: 100 = page 1; skip: 100, limit: 100 = page 2'
+  response_fields:
+    events: array of stETH interactions and reward-accruing events
+  other_apis: >-
+    The Lido Ethereum API exposes a Pagination component schema on its protocol series responses;
+    the Withdrawals API returns bounded result sets and does not paginate.
+  docs: https://docs.lido.fi/integrations/api
+
+field_expansion:
+  supported: false
+
+metadata:
+  supported: false
+
+request_tracing:
+  request_id_header: null
+  attribution_header: WQ-Request-Source
+  attribution_values: [widget, sdk, unknown]
+  note: >-
+    The Withdrawals API accepts an optional WQ-Request-Source header describing the source of the
+    withdrawal-time request. It is telemetry/attribution, not tracing or authentication.
+
+versioning:
+  scheme: uri-path
+  current:
+    eth_api: v1
+    withdrawals_api: v2 (v1 request-time still served)
+    reward_history_api: unversioned (single / endpoint)
+  mechanism: Major version is the first path segment (/v1/..., /v2/...).
+  detail: lifecycle/lido-finance-lifecycle.yml
+  changelog: changelog/lido-finance-changelog.yml
+
+error_envelope:
+  media_type: application/json
+  rfc9457: false
+  shape: '{ "statusCode": number, "message": string[], "error": string }'
+  note: >-
+    The standard NestJS error envelope, declared as the ErrorResponseType schema in the Withdrawals
+    API. message is an array of validation error strings.
+  detail: errors/lido-finance-problem-types.yml
+
+rate_limits:
+  documented: false
+  note: >-
+    No published rate-limit policy, quota, or 429 response is documented for any of the three public
+    APIs. The Reward History API documents a 500 when "subgraph limits were hit", which is an
+    upstream indexing limit rather than a caller rate limit.
+
+query_conventions:
+- name: Repeated query parameters for arrays
+  detail: 'Withdrawal request ids repeat the key: /v2/request-time?ids=1&ids=2'
+- name: Amounts
+  detail: stETH/ETH amounts are expressed in wei as decimal strings in responses; the calculate endpoint accepts a human-readable ETH amount (e.g. amount=32).
+- name: Timestamps
+  detail: Unix epoch seconds (blockTime).
+- name: Fiat denomination
+  detail: 'Reward History accepts currency=usd|eur|gbp and archiveRate=true|false (historical vs current exchange rate).'
+
+testing:
+  detail: sandbox/lido-finance-sandbox.yml
+  note: Every service has a parallel Hoodi testnet deployment on *.testnet.fi.
+
+related:
+  errors: errors/lido-finance-problem-types.yml
+  lifecycle: lifecycle/lido-finance-lifecycle.yml
+  authentication: authentication/lido-finance-authentication.yml
+  data_model: data-model/lido-finance-data-model.yml

@@ -1,0 +1,69 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.lido.fi/integrations/sdk plus live registry lookups against registry.npmjs.org and
+  pypi.org. Versions are the latest published at harvest time.
+description: >-
+  First-party Lido client libraries. Note the split: the public REST APIs (eth-api, wq-api,
+  reward-history) are plain unauthenticated HTTP and have no dedicated client library — the SDKs
+  below target the Lido on Ethereum smart contracts (staking, wrapping, withdrawals, stVaults) and
+  node-operator key tooling.
+packages:
+- language: typescript
+  registry: npm
+  name: '@lidofinance/lido-ethereum-sdk'
+  version: 4.8.0
+  url: https://www.npmjs.com/package/@lidofinance/lido-ethereum-sdk
+  install: npm install @lidofinance/lido-ethereum-sdk
+  repository: https://github.com/lidofinance/lido-ethereum-sdk
+  documentation: https://lidofinance.github.io/lido-ethereum-sdk/
+  description: >-
+    Library for interacting with the Lido on Ethereum protocol — staking, wrapping/unwrapping
+    stETH/wstETH, the withdrawal queue, shares math, rewards and stVaults. Built on viem.
+  official: true
+- language: typescript
+  registry: npm
+  name: '@lidofinance/lido-csm-sdk'
+  version: 1.11.0
+  url: https://www.npmjs.com/package/@lidofinance/lido-csm-sdk
+  install: npm install @lidofinance/lido-csm-sdk
+  repository: https://github.com/lidofinance/lido-csm-sdk
+  description: SDK for the Lido Community Staking Module (CSM) — permissionless node-operator flows.
+  official: true
+- language: typescript
+  registry: npm
+  name: '@lidofinance/lido-ui'
+  version: 3.42.2
+  url: https://www.npmjs.com/package/@lidofinance/lido-ui
+  install: npm install @lidofinance/lido-ui
+  repository: https://github.com/lidofinance/ui
+  documentation: https://ui.lido.fi
+  description: React component library used across Lido Finance front-ends. See components/ for the component surface.
+  official: true
+- language: python
+  registry: pypi
+  name: lido-sdk
+  version: 4.1.0
+  url: https://pypi.org/project/lido-sdk/
+  install: pip install lido-sdk
+  repository: https://github.com/lidofinance/lido-python-sdk
+  description: >-
+    Consolidates functions to load Lido network data, validate node-operator keys and find key
+    duplicates.
+  official: true
+registries_probed:
+- registry: npm
+  scope: '@lidofinance'
+  result: multiple first-party packages found
+- registry: pypi
+  result: lido-sdk found (lidofinance/lido-python-sdk)
+- registry: maven-central
+  result: no first-party package found
+- registry: nuget
+  result: no first-party package found
+- registry: rubygems
+  result: no first-party package found
+- registry: packagist
+  result: no first-party package found
+- registry: crates.io
+  result: no first-party package found

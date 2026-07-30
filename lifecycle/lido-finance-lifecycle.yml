@@ -1,0 +1,69 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://docs.lido.fi/integrations/api, https://docs.lido.fi/deployed-contracts/,
+  https://docs.lido.fi/deployed-contracts/hoodi-lidov3, and the OpenAPI info.version of each service.
+description: >-
+  Versioning and deprecation posture for Lido's public APIs and testnet deployments. Lido publishes
+  no SLA and no hosted status page for the REST APIs; lifecycle communication happens through the
+  docs site, the DAO governance forum (research.lido.fi) and Lido Improvement Proposals.
+versioning:
+  scheme: uri-path
+  mechanism: Major version is the first path segment of each endpoint.
+  services:
+  - service: Lido Ethereum API
+    path_version: v1
+    build_version: 0.18.0
+    source: openapi/lido-finance-eth-api-openapi-original.json
+  - service: Lido Withdrawals API
+    path_version: v2
+    build_version: 0.26.0
+    source: openapi/lido-finance-withdrawal-queue-openapi-original.json
+    note: v1 /v1/request-time remains served alongside the v2 endpoints.
+  - service: Lido Reward History Backend API
+    path_version: unversioned
+    build_version: 0.17.2
+    source: openapi/lido-finance-reward-history-openapi-original.json
+  docs: https://docs.lido.fi/integrations/api
+deprecation:
+  policy_url: https://docs.lido.fi/deployed-contracts/hoodi-lidov3
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  practice: >-
+    Deprecations are announced in the documentation and through Lido Improvement Proposals / DAO
+    votes rather than via HTTP Sunset or Deprecation headers. The docs carry explicit deprecation
+    banners, e.g. the archived "Hoodi: Lido V3 testnet-2" deployment is marked "This deployment is
+    deprecated and will be decommissioned soon."
+  examples:
+  - item: Hoodi Lido V3 testnet-2 deployment
+    status: deprecated
+    url: https://docs.lido.fi/deployed-contracts/hoodi-lidov3
+  - item: Holesky testnet deployment
+    status: legacy
+    url: https://docs.lido.fi/deployed-contracts/holesky
+  - item: Sepolia deployment
+    status: limited
+    note: No comprehensive Lido testnet environment on Sepolia due to the network's permissioned validator set.
+    url: https://docs.lido.fi/deployed-contracts/sepolia
+  sdk_practice: >-
+    The Lido Ethereum SDK marks older methods for deprecation while retaining backward
+    compatibility (see changelog/lido-finance-changelog.yml, 4.8.0).
+deprecated_operations: []
+sla:
+  published: false
+status_page:
+  published: false
+  probed:
+  - url: https://status.lido.fi
+    status: unresolvable
+  note: >-
+    No hosted status page was found for the Lido public APIs. Protocol-level health is observable
+    on-chain and through the DAO forum.
+governance:
+  proposals: https://docs.lido.fi/lido-dao/lido-improvement-proposals
+  forum: https://research.lido.fi/
+  dao: https://dao.lido.fi/
+related:
+  changelog: changelog/lido-finance-changelog.yml
+  conventions: conventions/lido-finance-conventions.yml

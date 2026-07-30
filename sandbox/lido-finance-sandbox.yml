@@ -1,0 +1,62 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.lido.fi/integrations/api and https://docs.lido.fi/deployed-contracts/
+description: >-
+  Lido's test surface is network-based rather than key-based: because the public APIs are
+  unauthenticated there are no test-vs-live key prefixes. Instead every public API service runs a
+  parallel deployment against the Hoodi Ethereum testnet on *.testnet.fi hosts, matched by a full
+  set of Lido protocol contracts deployed to Hoodi.
+test_live_separation:
+  mechanism: separate hostnames per network (no API keys, no modes)
+  key_prefixes: none
+testnets:
+- network: Hoodi
+  status: current
+  contracts: https://docs.lido.fi/deployed-contracts/hoodi
+  endpoints:
+  - service: Lido Ethereum API
+    base_url: https://eth-api-hoodi.testnet.fi
+    examples:
+    - https://eth-api-hoodi.testnet.fi/v1/protocol/steth/apr/sma
+    - https://eth-api-hoodi.testnet.fi/v1/protocol/steth/apr/last
+  - service: Lido Withdrawals API
+    base_url: https://wq-api-hoodi.testnet.fi
+    examples:
+    - https://wq-api-hoodi.testnet.fi/v2/request-time?ids=1&ids=2
+  - service: Lido Reward History Backend API
+    base_url: http://reward-history-backend-hoodi.testnet.fi
+    examples:
+    - http://reward-history-backend-hoodi.testnet.fi/?address=0x12345
+    note: Documented over http, not https.
+- network: Hoodi (Lido V3 testnet-2)
+  status: deprecated
+  contracts: https://docs.lido.fi/deployed-contracts/hoodi-lidov3
+  note: Marked in the docs as deprecated and due for decommissioning.
+- network: Holesky
+  status: legacy
+  contracts: https://docs.lido.fi/deployed-contracts/holesky
+- network: Sepolia
+  status: limited
+  contracts: https://docs.lido.fi/deployed-contracts/sepolia
+  note: >-
+    No comprehensive Lido testnet environment on Sepolia due to the network's permissioned
+    validator set.
+test_values:
+  documented_placeholder_address: '0x12345'
+  note: >-
+    The docs use 0x12345 purely as a placeholder in the Reward History example URL. Lido publishes
+    no magic/fixture addresses — supply a real Hoodi address that has interacted with the testnet
+    protocol.
+interactive_consoles:
+- name: Lido Ethereum API Swagger UI
+  url: https://eth-api.lido.fi/api
+- name: Lido Withdrawals API Swagger UI
+  url: https://wq-api.lido.fi/api
+- name: Lido Ethereum SDK Playground
+  url: https://github.com/lidofinance/lido-ethereum-sdk
+  note: The SDK repo ships a Playground app exercising each module against mainnet and testnets.
+sdk_support:
+  hoodi: Added in Lido Ethereum SDK 4.4.0.
+related:
+  conventions: conventions/lido-finance-conventions.yml
+  lifecycle: lifecycle/lido-finance-lifecycle.yml
