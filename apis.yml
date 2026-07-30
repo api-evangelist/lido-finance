@@ -1,22 +1,260 @@
 aid: lido-finance
 name: Lido Finance
-description: Lido Finance is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Lido is a liquid staking protocol for Ethereum, live since 2020, that lets holders stake ETH
+  without running validator infrastructure and receive stETH — a rebasing ERC-20 liquid staking
+  token that accrues staking rewards while remaining transferable and usable as collateral across
+  DeFi. wstETH is the non-rebasing wrapped form. The protocol is governed by the Lido DAO and
+  operated by a curated and permissionless (CSM) set of node operators, with on-chain accounting,
+  oracles, a withdrawal queue, and staking vaults (stVaults) introduced in Lido V3. For developers,
+  Lido publishes a set of strictly read-only public REST APIs — the Lido Ethereum API (protocol and
+  stETH APR, prices, stats, swap rates), the Withdrawals API (withdrawal queue wait-time estimation,
+  withdrawal NFT metadata, gas estimation, validator info), and the Reward History Backend (per-address
+  stETH interactions and daily reward accounting) — alongside a GraphQL subgraph on The Graph, the
+  Lido Ethereum SDK for TypeScript, a Python SDK, and a React UI component library.
 url: https://raw.githubusercontent.com/api-evangelist/lido-finance/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://lido.fi/favicon.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Blockchain
+- Ethereum
+- Liquid Staking
+- DeFi
+- Cryptocurrency
+- Staking
+- Web3
+- Financial Services
+- GraphQL
+apis:
+- aid: lido-finance:lido-subgraph
+  name: Lido Subgraph (GraphQL)
+  description: >-
+    GraphQL subgraph deployed to The Graph Decentralized Network that indexes Lido smart-contract events
+    — rewards distribution, oracle reports, stETH transfers and submissions, node operator keys — and
+    exposes them for query.
+  humanURL: https://docs.lido.fi/integrations/subgraph
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - GraphQL
+  - Subgraph
+  - Indexing
+  properties:
+  - type: GraphQL
+    url: graphql/lido-finance-subgraph-schema.graphql
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/subgraph
+- aid: lido-finance:lido-finance-apr-for-eth-and-steth-api
+  name: Lido Finance APR for Eth and stEth API
+  description: >-
+    The APR for Eth and stEth API from Lido Finance — 8 operation(s) for apr for eth and steth.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - APR for Eth and stEth
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-apr-for-eth-and-steth-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-estimate-api
+  name: Lido Finance Estimate API
+  description: The Estimate API from Lido Finance — 1 operation(s) for estimate.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - Estimate
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-estimate-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-nft-api
+  name: Lido Finance NFT API
+  description: The NFT API from Lido Finance — 2 operation(s) for nft.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - NFT
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-nft-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-request-time-api
+  name: Lido Finance Request Time API
+  description: The Request Time API from Lido Finance — 3 operation(s) for request time.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - Request Time
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-request-time-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-rewards-api
+  name: Lido Finance Rewards API
+  description: The Rewards API from Lido Finance — 1 operation(s) for rewards.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-rewards-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-swap-rate-for-steth-and-wsteth-api
+  name: Lido Finance Swap rate for stETH and wstETH API
+  description: >-
+    The Swap rate for stETH and wstETH API from Lido Finance — 2 operation(s) for swap rate for steth
+    and wsteth.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - Swap rate for stETH and wstETH
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido-finance:lido-finance-validators-api
+  name: Lido Finance Validators API
+  description: The Validators API from Lido Finance — 1 operation(s) for validators.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://eth-api.lido.fi
+  tags:
+  - Validators
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-finance-validators-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+common:
+- type: Website
+  url: https://lido.fi/
+- type: DeveloperPortal
+  url: https://docs.lido.fi/
+- type: Documentation
+  url: https://docs.lido.fi/
+- type: APIReference
+  url: https://docs.lido.fi/integrations/api
+- type: GettingStarted
+  url: https://docs.lido.fi/integrations/api
+- type: Blog
+  url: https://blog.lido.fi/
+- type: Support
+  url: https://help.lido.fi/
+- type: HelpCenter
+  url: https://help.lido.fi/
+- type: GitHubOrganization
+  url: https://github.com/lidofinance
+- type: TermsOfService
+  url: https://lido.fi/terms-of-use
+- type: PrivacyPolicy
+  url: https://lido.fi/privacy-notice
+- type: SignUp
+  url: https://stake.lido.fi/
+- type: Roadmap
+  url: https://research.lido.fi/
+- type: Governance
+  url: https://dao.lido.fi/
+- type: Security
+  url: https://immunefi.com/bug-bounty/lido/information/
+- type: VulnerabilityDisclosure
+  url: security/lido-finance-vulnerability-disclosure.yml
+- type: SecurityTxt
+  url: well-known/lido-finance-security.txt
+- type: WellKnown
+  url: well-known/lido-finance-well-known.yml
+- type: DomainSecurity
+  url: security/lido-finance-domain-security.yml
+- type: Audits
+  url: https://github.com/lidofinance/audits
+- type: Packages
+  url: packages/lido-finance-packages.yml
+- type: SDKs
+  url: packages/lido-finance-packages.yml
+- type: Components
+  url: components/lido-finance-components.yml
+- type: Authentication
+  url: authentication/lido-finance-authentication.yml
+- type: Conventions
+  url: conventions/lido-finance-conventions.yml
+- type: ErrorCatalog
+  url: errors/lido-finance-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/lido-finance-lifecycle.yml
+- type: ChangeLog
+  url: changelog/lido-finance-changelog.yml
+- type: Conformance
+  url: conformance/lido-finance-conformance.yml
+- type: DataModel
+  url: data-model/lido-finance-data-model.yml
+- type: Sandbox
+  url: sandbox/lido-finance-sandbox.yml
+- type: MCPServer
+  url: mcp/lido-finance-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/lido-finance-llms.txt
+- type: AgenticAccess
+  url: agentic-access/lido-finance-agentic-access.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
