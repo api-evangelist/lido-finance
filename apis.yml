@@ -178,6 +178,8 @@ apis:
   - type: Swagger
     url: https://wq-api.lido.fi/api
 common:
+- type: Overlay
+  url: overlays/lido-finance-eth-api-overlay.yaml
 - type: Website
   url: https://lido.fi/
 - type: DeveloperPortal
