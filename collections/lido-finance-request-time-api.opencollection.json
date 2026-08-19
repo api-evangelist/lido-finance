@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth Request Time API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Request Time",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RequestTimeController_requestTimeV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/request-time",
+            "headers": [
+              {
+                "name": "WQ-Request-Source",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "stETH amount to withdrawal"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "RequestTimeController_requestsTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/request-time",
+            "headers": [
+              {
+                "name": "WQ-Request-Source",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Array of id withdrawal requests"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "RequestTimeController_calculateTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v2/request-time/calculate",
+            "headers": [
+              {
+                "name": "WQ-Request-Source",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "stETH amount to withdrawal"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

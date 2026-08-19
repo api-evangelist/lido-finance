@@ -1,0 +1,702 @@
+{
+  "item": [
+    {
+      "id": "9fe9792b-3078-4877-bcc4-1e250aeee9fd",
+      "name": "APR for Eth and stEth",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aad24287-8e81-488b-99f0-6f35c1eb4d85",
+          "name": "Protocol Controller find AP Rfor Eth",
+          "request": {
+            "name": "Protocol Controller find AP Rfor Eth",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "eth",
+                "apr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<number>",
+                  "description": "unix timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<number>",
+                  "description": "unix timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c53dcba-a102-40fa-84c9-3f862a8d90b6",
+              "name": "APR for Eth",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "eth",
+                    "apr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "1602674799"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "1602674799"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"timeUnix\": 1665663911,\n      \"apr\": 5.1\n    },\n    {\n      \"timeUnix\": 1665663911,\n      \"apr\": 5.1\n    }\n  ],\n  \"meta\": {\n    \"symbol\": \"stETH\",\n    \"address\": \"0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84\",\n    \"chainId\": 1\n  },\n  \"pagination\": {\n    \"page\": 2,\n    \"pageSize\": 100,\n    \"itemCount\": 250,\n    \"pageCount\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4657966c-4819-4a5c-85da-19373e98f2e3",
+          "name": "Protocol Controller find Eth Price",
+          "request": {
+            "name": "Protocol Controller find Eth Price",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "eth",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51a86ec8-62c0-41a7-8880-aba4f479ea9e",
+              "name": "Price for ETH",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "eth",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"price\": 5162.408465492946\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25d159cb-1e91-424c-917a-ae1352134b90",
+          "name": "Protocol Controller find Last AP Rfor Eth",
+          "request": {
+            "name": "Protocol Controller find Last AP Rfor Eth",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "eth",
+                "apr",
+                "last"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "891edabd-d43f-48a9-9e34-881bb91b9949",
+              "name": "Last DB APR for ETH",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "eth",
+                    "apr",
+                    "last"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"timeUnix\": 1665663911,\n    \"apr\": 5.1\n  },\n  \"meta\": {\n    \"symbol\": \"stETH\",\n    \"address\": \"0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84\",\n    \"chainId\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e09413c7-073c-4626-bd86-ebfdc89cc346",
+          "name": "Protocol Controller find AP Rfor STETH",
+          "request": {
+            "name": "Protocol Controller find AP Rfor STETH",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "steth",
+                "apr"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<number>",
+                  "description": "unix timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<number>",
+                  "description": "unix timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bebd61ce-57ae-4ec0-9eda-cb278d9146e8",
+              "name": "APR for stEth",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "steth",
+                    "apr"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startTime",
+                      "value": "1602674799"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "1602674799"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"timeUnix\": 1665663911,\n      \"apr\": 5.1\n    },\n    {\n      \"timeUnix\": 1665663911,\n      \"apr\": 5.1\n    }\n  ],\n  \"meta\": {\n    \"symbol\": \"stETH\",\n    \"address\": \"0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84\",\n    \"chainId\": 1\n  },\n  \"pagination\": {\n    \"page\": 2,\n    \"pageSize\": 100,\n    \"itemCount\": 250,\n    \"pageCount\": 3\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7a3c9a8-8aa8-4442-b87e-618c7ca841cd",
+          "name": "Protocol Controller find St Eth Price",
+          "request": {
+            "name": "Protocol Controller find St Eth Price",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "steth",
+                "price"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "601a084f-cd89-4953-8fd6-26dda44a2ce8",
+              "name": "Price for stETH",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "steth",
+                    "price"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"price\": 5162.408465492946\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95b40881-87ae-4994-b110-f59ad820c1ae",
+          "name": "Protocol Controller find Steth Stats",
+          "request": {
+            "name": "Protocol Controller find Steth Stats",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "steth",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32077eb4-a6e5-49e0-b57b-d710f5384b01",
+              "name": "Short stETH stats",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "steth",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uniqueAnytimeHolders\": \"string\",\n  \"uniqueHolders\": \"string\",\n  \"totalStaked\": \"string\",\n  \"marketCap\": 6783.646571126794\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2c751c2-3898-46a5-9701-1cc270b8d314",
+          "name": "Protocol Controller find Last AP Rfor STETH",
+          "request": {
+            "name": "Protocol Controller find Last AP Rfor STETH",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "steth",
+                "apr",
+                "last"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "995a2bc3-dbc0-408e-b171-00a79a77a77e",
+              "name": "Last DB APR for stEth",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "steth",
+                    "apr",
+                    "last"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"timeUnix\": 1665663911,\n    \"apr\": 5.1\n  },\n  \"meta\": {\n    \"symbol\": \"stETH\",\n    \"address\": \"0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84\",\n    \"chainId\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dee609e5-24f5-45c0-b89e-444f076e9283",
+          "name": "Protocol Controller find Sma AP Rfor STETH",
+          "request": {
+            "name": "Protocol Controller find Sma AP Rfor STETH",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "protocol",
+                "steth",
+                "apr",
+                "sma"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cb568b7-6894-400c-8e49-0f4853de13b3",
+              "name": "Simple Moving Average APR for 7 last days in db",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "protocol",
+                    "steth",
+                    "apr",
+                    "sma"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"aprs\": [\n      {\n        \"timeUnix\": 1665663911,\n        \"apr\": 5.1\n      },\n      {\n        \"timeUnix\": 1665663911,\n        \"apr\": 5.1\n      }\n    ],\n    \"smaApr\": 5.1\n  },\n  \"meta\": {\n    \"symbol\": \"stETH\",\n    \"address\": \"0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84\",\n    \"chainId\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "31eceecd-32cf-4d21-904f-5dc9dee6a9a3",
+    "name": "Lido Ethereum APR for Eth and stEth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

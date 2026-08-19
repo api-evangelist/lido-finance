@@ -1,0 +1,122 @@
+{
+  "item": [
+    {
+      "id": "ec990b1f-9b97-4af8-83c9-2f38a615a493",
+      "name": "Estimate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7cb8aa4-f83c-4115-b061-bf010ba743fe",
+          "name": "Estimate Controller request Time V1",
+          "request": {
+            "name": "Estimate Controller request Time V1",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "estimate-gas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) Is token name"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestCount",
+                  "value": "<number>",
+                  "description": "(Required) Is request count"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cd2f014-6aee-4592-afd9-e2a35f0dcb70",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "estimate-gas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestCount",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gasLimit\": 7777\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a8339fe9-e658-4866-a5d2-f967bc790910",
+    "name": "Lido Ethereum APR for Eth and stEth Estimate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

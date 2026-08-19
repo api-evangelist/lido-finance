@@ -1,14 +1,12 @@
 generated: '2026-07-19'
 method: derived
 status: candidate
-source: >-
-  Derived from the 18 operations across the three harvested Lido OpenAPI documents. A search of
-  docs.lido.fi, the lidofinance GitHub org surface referenced in the docs, and the npm
-  @lidofinance scope found no official hosted or published MCP server as of this pass.
-description: >-
-  Candidate MCP tool surface for the Lido public APIs. Every operation is an unauthenticated GET,
-  which makes this an unusually clean read-only MCP surface — no credentials to broker, no
-  write-path consequences. Not published by Lido; this is an API Evangelist derivation.
+source: Derived from the 18 operations across the three harvested Lido OpenAPI documents. A search of
+  docs.lido.fi, the lidofinance GitHub org surface referenced in the docs, and the npm @lidofinance scope
+  found no official hosted or published MCP server as of this pass.
+description: Candidate MCP tool surface for the Lido public APIs. Every operation is an unauthenticated
+  GET, which makes this an unusually clean read-only MCP surface — no credentials to broker, no write-path
+  consequences. Not published by Lido; this is an API Evangelist derivation.
 server:
   name: lido-finance
   transport: http
@@ -77,3 +75,9 @@ searched:
   - https://docs.lido.fi/integrations/sdk
   - npm @lidofinance scope
   result: no official MCP server published
+deployment:
+  mode: none
+  verified: derived
+  tools: 18
+  checked: '2026-08-12'
+  source: catalog MCP census

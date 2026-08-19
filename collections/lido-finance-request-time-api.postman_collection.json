@@ -1,0 +1,420 @@
+{
+  "item": [
+    {
+      "id": "88b8d703-f75e-4fbe-b310-32213dbbf72f",
+      "name": "Request Time",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a644995-a76d-435e-8b04-f9802f394625",
+          "name": "Request Time Controller request Time V1",
+          "request": {
+            "name": "Request Time Controller request Time V1",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "request-time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<number>",
+                  "description": "stETH amount to withdrawal"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Sources of withdrawal time requests",
+                "key": "WQ-Request-Source",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c048f1d4-b6b9-444d-a3d8-376fcca13181",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "request-time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Sources of withdrawal time requests",
+                    "key": "WQ-Request-Source",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"days\": 5,\n  \"stethLastUpdate\": 0,\n  \"validatorsLastUpdate\": 0,\n  \"requests\": 10,\n  \"steth\": \"string\",\n  \"status\": \"initializing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c283a951-8b15-4a22-bfea-f11d333a06ce",
+          "name": "Request Time Controller requests Time",
+          "request": {
+            "name": "Request Time Controller requests Time",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "request-time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Array of id withdrawal requests"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) Array of id withdrawal requests"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Sources of withdrawal time requests",
+                "key": "WQ-Request-Source",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d450784-abde-4374-98ba-a42db33657cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "request-time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Sources of withdrawal time requests",
+                    "key": "WQ-Request-Source",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"requestInfo\": {\n      \"finalizationIn\": 5,\n      \"finalizationAt\": \"2023-10-04T15:14:24.202Z\",\n      \"requestId\": \"string\",\n      \"requestedAt\": \"2023-10-03T15:14:24.202Z\",\n      \"type\": \"buffer\"\n    },\n    \"status\": \"initializing\",\n    \"nextCalculationAt\": \"2023-10-03T11:14:24.202Z\"\n  },\n  {\n    \"requestInfo\": {\n      \"finalizationIn\": 5,\n      \"finalizationAt\": \"2023-10-04T15:14:24.202Z\",\n      \"requestId\": \"string\",\n      \"requestedAt\": \"2023-10-03T15:14:24.202Z\",\n      \"type\": \"buffer\"\n    },\n    \"status\": \"calculating\",\n    \"nextCalculationAt\": \"2023-10-03T11:14:24.202Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c261f519-af63-4325-b1a4-24baeee839b3",
+              "name": "ids should be array of string id withdrawal requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "request-time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Sources of withdrawal time requests",
+                    "key": "WQ-Request-Source",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c799566b-83f4-44d3-9843-c8c6737e6427",
+          "name": "Request Time Controller calculate Time",
+          "request": {
+            "name": "Request Time Controller calculate Time",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "request-time",
+                "calculate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<number>",
+                  "description": "stETH amount to withdrawal"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Sources of withdrawal time requests",
+                "key": "WQ-Request-Source",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11628db5-0e6e-4301-91b1-b69d64079937",
+              "name": "Calculates time to withdrawal amount of stEth",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "request-time",
+                    "calculate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Sources of withdrawal time requests",
+                    "key": "WQ-Request-Source",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestInfo\": {\n    \"finalizationIn\": 5,\n    \"finalizationAt\": \"2023-10-04T15:14:24.202Z\",\n    \"type\": \"buffer\"\n  },\n  \"status\": \"calculating\",\n  \"nextCalculationAt\": \"2023-10-03T11:14:24.202Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d86f9b7-e180-4678-a78a-443786c6263b",
+              "name": "Amount should be valid eth value or amount should not be",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "request-time",
+                    "calculate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Sources of withdrawal time requests",
+                    "key": "WQ-Request-Source",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 400,\n  \"message\": [\n    \"string\",\n    \"string\"\n  ],\n  \"error\": \"Bad Request\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0fbcf320-e9f6-40ba-bc03-14d425d6838f",
+    "name": "Lido Ethereum APR for Eth and stEth Request Time API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "item": [
+    {
+      "id": "49f114f9-38f6-43ab-83f5-9b722a8956f8",
+      "name": "NFT",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d5941b5-bf34-4dae-8227-6fa77bfa9c03",
+          "name": "NFT Controller nft Meta V1",
+          "request": {
+            "name": "NFT Controller nft Meta V1",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nft",
+                ":tokenId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "requested",
+                  "value": "<string>",
+                  "description": "(Required) Requested token amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<number>",
+                  "description": "(Required) Created timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "finalized",
+                  "value": "<bigint>",
+                  "description": "Claimable token amount"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "tokenId",
+                  "description": "(Required) NFT token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "369e841c-63cb-41bf-b264-2a8af81471c1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nft",
+                    ":tokenId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requested",
+                      "value": "25000000000000000000"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "1658650005"
+                    },
+                    {
+                      "key": "finalized",
+                      "value": "25000000000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "tokenId",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"My NFT\",\n  \"description\": \"This is my first NFT\",\n  \"image\": \"data:image/png;base64\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f704e31-fd86-4c96-b005-1dbbd9981516",
+          "name": "NFT Controller nft Image V1",
+          "request": {
+            "name": "NFT Controller nft Image V1",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "nft",
+                ":tokenId",
+                "image"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "requested",
+                  "value": "<string>",
+                  "description": "(Required) Requested token amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<number>",
+                  "description": "(Required) Created timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "finalized",
+                  "value": "<bigint>",
+                  "description": "Claimable token amount"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<number>",
+                  "key": "tokenId",
+                  "description": "(Required) NFT token id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af5900c9-28a8-46c6-a4e6-a382b4a0280e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "nft",
+                    ":tokenId",
+                    "image"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "requested",
+                      "value": "25000000000000000000"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "1658650005"
+                    },
+                    {
+                      "key": "finalized",
+                      "value": "25000000000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<number>",
+                      "key": "tokenId",
+                      "description": "(Required) NFT token id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"My NFT\",\n  \"description\": \"This is my first NFT\",\n  \"image\": \"data:image/png;base64\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "066994b3-e54b-494f-a28c-e223326be81d",
+    "name": "Lido Ethereum APR for Eth and stEth NFT API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

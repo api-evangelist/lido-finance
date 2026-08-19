@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth NFT API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "NFTController_nftMetaV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nft/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path",
+                "description": "NFT token id"
+              },
+              {
+                "name": "requested",
+                "value": "",
+                "type": "query",
+                "description": "Requested token amount"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Created timestamp"
+              },
+              {
+                "name": "finalized",
+                "value": "",
+                "type": "query",
+                "description": "Claimable token amount"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "NFTController_nftImageV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/nft/:tokenId/image",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path",
+                "description": "NFT token id"
+              },
+              {
+                "name": "requested",
+                "value": "",
+                "type": "query",
+                "description": "Requested token amount"
+              },
+              {
+                "name": "created_at",
+                "value": "",
+                "type": "query",
+                "description": "Created timestamp"
+              },
+              {
+                "name": "finalized",
+                "value": "",
+                "type": "query",
+                "description": "Claimable token amount"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

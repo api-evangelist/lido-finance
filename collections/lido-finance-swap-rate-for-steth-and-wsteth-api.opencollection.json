@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth Swap rate for stETH and wstETH API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Swap rate for stETH and wstETH",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SwapController_findOneInchRate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/swap/one-inch",
+            "params": [
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Token amount in wei as BigNumber string"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Token sybmol"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "SwapController_findJumperRate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/swap/jumper",
+            "params": [
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Token amount in wei as BigNumber string"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Token sybmol"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

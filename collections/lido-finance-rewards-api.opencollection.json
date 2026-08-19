@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth Rewards API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "RewardsController_rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Fiat currency to use for calculations. USD by default."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Max value is 10000."
+              },
+              {
+                "name": "archiveRate",
+                "value": "",
+                "type": "query",
+                "description": "Use an exchange rate close to transaction time in curency calculations. True by default."
+              },
+              {
+                "name": "onlyRewards",
+                "value": "",
+                "type": "query",
+                "description": "Include only rewards without transfers or stakings. False by default."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort of transactions by blockTime. Desc by default."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

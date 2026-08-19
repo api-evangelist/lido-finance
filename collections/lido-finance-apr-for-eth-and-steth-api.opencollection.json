@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "APR for Eth and stEth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProtocolController_findAPRforEth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/eth/apr",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "unix timestamp"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "unix timestamp"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findEthPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/eth/price"
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findLastAPRforEth",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/eth/apr/last"
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findAPRforSTETH",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/steth/apr",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "unix timestamp"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "unix timestamp"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findStEthPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/steth/price"
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findStethStats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/steth/stats"
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findLastAPRforSTETH",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/steth/apr/last"
+          }
+        },
+        {
+          "info": {
+            "name": "ProtocolController_findSmaAPRforSTETH",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/protocol/steth/apr/sma"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

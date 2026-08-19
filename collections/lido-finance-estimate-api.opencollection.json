@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth Estimate API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Estimate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "EstimateController_requestTimeV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/estimate-gas",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Is token name"
+              },
+              {
+                "name": "requestCount",
+                "value": "",
+                "type": "query",
+                "description": "Is request count"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

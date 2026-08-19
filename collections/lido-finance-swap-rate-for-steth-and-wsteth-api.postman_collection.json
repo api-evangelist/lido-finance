@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "f74d7598-4375-4831-a4f0-3ee8e06edcdd",
+      "name": "Swap rate for stETH and wstETH",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63f66d63-3255-4087-9a78-83bd12c533a0",
+          "name": "Swap Controller find One Inch Rate",
+          "request": {
+            "name": "Swap Controller find One Inch Rate",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "swap",
+                "one-inch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<string>",
+                  "description": "Token amount in wei as BigNumber string"
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) Token sybmol"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8005865b-cd43-48c3-8829-c62ad525488a",
+              "name": "One inch swap rate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "swap",
+                    "one-inch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "1337"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rate\": 7501.801020629375,\n  \"toReceive\": \"string\",\n  \"fromAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a18c9d58-bd0b-4817-ab13-654c67ecdad8",
+          "name": "Swap Controller find Jumper Rate",
+          "request": {
+            "name": "Swap Controller find Jumper Rate",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "swap",
+                "jumper"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<string>",
+                  "description": "Token amount in wei as BigNumber string"
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) Token sybmol"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e9c5a29-6d32-4bf0-a785-7069f65b79ca",
+              "name": "Jumper swap rate",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "swap",
+                    "jumper"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "1337"
+                    },
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rate\": 7501.801020629375,\n  \"toReceive\": \"string\",\n  \"fromAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "16a800fb-99d1-404b-8d9f-5405b606edb9",
+    "name": "Lido Ethereum APR for Eth and stEth Swap rate for stETH and wstETH API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

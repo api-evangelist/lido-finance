@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Lido Ethereum APR for Eth and stEth Validators API",
+    "version": "0.18.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ValidatorsController_validatorsV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validators-info"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

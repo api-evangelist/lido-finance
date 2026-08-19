@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "d903a8ff-8f5a-495a-993c-aa8f050c4d4d",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eae78f22-8531-4d5b-a7c9-906d86168728",
+          "name": "Rewards Controller rewards",
+          "request": {
+            "name": "Rewards Controller rewards",
+            "description": {},
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Fiat currency to use for calculations. USD by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>",
+                  "description": "Maximum number of records to return. Max value is 10000."
+                },
+                {
+                  "disabled": false,
+                  "key": "archiveRate",
+                  "value": "<boolean>",
+                  "description": "Use an exchange rate close to transaction time in curency calculations. True by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "onlyRewards",
+                  "value": "<boolean>",
+                  "description": "Include only rewards without transfers or stakings. False by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort of transactions by blockTime. Desc by default."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55611f1f-c6f0-42f7-a25b-f7a208ebd9a6",
+              "name": "Transfers, stakings, Lido rewards for the address.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "archiveRate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyRewards",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    \"string\",\n    \"string\"\n  ],\n  \"totals\": {\n    \"ethRewards\": \"245552874602011\",\n    \"currencyRewards\": \"0.8708252194680570421607191945488\"\n  },\n  \"averageApr\": \"3.547336805048441041\",\n  \"ethToStEthRatio\": 1.0009916423804406,\n  \"stETHCurrencyPrice\": {\n    \"eth\": 0.99900934,\n    \"usd\": 2841.22\n  },\n  \"totalItems\": 100\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79f3ac8a-9ad0-4ff9-a161-29450d09d701",
+              "name": "Required address is not provided, invalid or other inputs are invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "archiveRate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyRewards",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82e4c461-9af1-453d-89ee-5590a00ec790",
+              "name": "Subgraph limits were hit or application ran into a critical error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "archiveRate",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "onlyRewards",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "867e1418-cd94-40d1-ac6e-ac849d0d346d",
+    "name": "Lido Ethereum APR for Eth and stEth Rewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
