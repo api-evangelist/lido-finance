@@ -13,6 +13,18 @@ description: >-
   stETH interactions and daily reward accounting) — alongside a GraphQL subgraph on The Graph, the
   Lido Ethereum SDK for TypeScript, a Python SDK, and a React UI component library.
 url: https://raw.githubusercontent.com/api-evangelist/lido-finance/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
