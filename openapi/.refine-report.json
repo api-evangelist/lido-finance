@@ -21,6 +21,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "lido-finance-apr-for-eth-and-steth-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-estimate-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-nft-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-request-time-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-rewards-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-validators-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

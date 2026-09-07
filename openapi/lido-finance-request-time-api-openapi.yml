@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Lido Ethereum APR for Eth and stEth Request Time API
   description: ''
@@ -117,27 +117,53 @@ paths:
       - Request Time
 components:
   schemas:
-    RequestTimeByRequestIdDto:
+    ErrorResponseType:
       type: object
       properties:
-        requestInfo:
-          $ref: '#/components/schemas/RequestByIdInfoDto'
-        status:
+        statusCode:
+          type: number
+          example: 400
+          description: Http status code
+        message:
+          description: Array of validation error messages
+          type: array
+          items:
+            type: string
+        error:
           type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-        nextCalculationAt:
-          type: string
-          description: Next calculation time at
-          example: '2023-10-03T11:14:24.202Z'
+          description: Error text
+          example: Bad Request
       required:
-      - requestInfo
-      - status
-      - nextCalculationAt
+      - statusCode
+      - message
+      - error
+    RequestInfoDto:
+      type: object
+      properties:
+        finalizationIn:
+          type: number
+          example: 5
+          description: Possible waiting ms
+        finalizationAt:
+          type: string
+          example: '2023-10-04T15:14:24.202Z'
+          description: Possible finalization At
+        type:
+          type: string
+          example: buffer
+          description: Case of calculation
+          enum:
+          - buffer
+          - bunker
+          - vaultsBalance
+          - rewardsOnly
+          - validatorBalances
+          - requestTimestampMargin
+          - exitValidators
+      required:
+      - finalizationIn
+      - finalizationAt
+      - type
     RequestTimeDto:
       type: object
       properties:
@@ -176,33 +202,48 @@ components:
       - requests
       - steth
       - status
-    RequestInfoDto:
+    RequestTimeV2Dto:
       type: object
       properties:
-        finalizationIn:
-          type: number
-          example: 5
-          description: Possible waiting ms
-        finalizationAt:
+        requestInfo:
+          $ref: '#/components/schemas/RequestInfoDto'
+        status:
           type: string
-          example: '2023-10-04T15:14:24.202Z'
-          description: Possible finalization At
-        type:
-          type: string
-          example: buffer
-          description: Case of calculation
+          description: Status of request calculation
           enum:
-          - buffer
-          - bunker
-          - vaultsBalance
-          - rewardsOnly
-          - validatorBalances
-          - requestTimestampMargin
-          - exitValidators
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
       required:
-      - finalizationIn
-      - finalizationAt
-      - type
+      - requestInfo
+      - status
+      - nextCalculationAt
+    RequestTimeByRequestIdDto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestByIdInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
     RequestByIdInfoDto:
       type: object
       properties:
@@ -240,44 +281,3 @@ components:
       - requestId
       - requestedAt
       - type
-    RequestTimeV2Dto:
-      type: object
-      properties:
-        requestInfo:
-          $ref: '#/components/schemas/RequestInfoDto'
-        status:
-          type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-        nextCalculationAt:
-          type: string
-          description: Next calculation time at
-          example: '2023-10-03T11:14:24.202Z'
-      required:
-      - requestInfo
-      - status
-      - nextCalculationAt
-    ErrorResponseType:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-          description: Http status code
-        message:
-          description: Array of validation error messages
-          type: array
-          items:
-            type: string
-        error:
-          type: string
-          description: Error text
-          example: Bad Request
-      required:
-      - statusCode
-      - message
-      - error

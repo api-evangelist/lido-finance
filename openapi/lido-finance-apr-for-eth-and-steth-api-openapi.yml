@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: Lido Ethereum APR for Eth and stEth API
   description: ''
@@ -170,21 +170,63 @@ paths:
       - APR for Eth and stEth
 components:
   schemas:
-    SmaApr:
+    SmaResponse:
       type: object
       properties:
-        aprs:
-          description: List of APR with timestamp for 7 days
+        data:
+          $ref: '#/components/schemas/SmaApr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    ProtocolLastResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: number
+          example: 2
+          default: 1
+        pageSize:
+          type: number
+          example: 100
+          default: 100
+        itemCount:
+          type: number
+          example: 250
+        pageCount:
+          type: number
+          example: 3
+      required:
+      - page
+      - pageSize
+      - itemCount
+      - pageCount
+    ProtocolResponse:
+      type: object
+      properties:
+        data:
           type: array
           items:
             $ref: '#/components/schemas/Apr'
-        smaApr:
-          type: number
-          example: 5.1
-          description: Simple Moving Average Apr for last 7 days in db
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
       required:
-      - aprs
-      - smaApr
+      - data
+      - meta
+      - pagination
     ShortStatsResponse:
       type: object
       properties:
@@ -222,63 +264,6 @@ components:
       required:
       - timeUnix
       - apr
-    SmaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SmaApr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    ProtocolLastResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Apr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    ProtocolResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Apr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      required:
-      - data
-      - meta
-      - pagination
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: number
-          example: 2
-          default: 1
-        pageSize:
-          type: number
-          example: 100
-          default: 100
-        itemCount:
-          type: number
-          example: 250
-        pageCount:
-          type: number
-          example: 3
-      required:
-      - page
-      - pageSize
-      - itemCount
-      - pageCount
     ProtocolMeta:
       type: object
       properties:
@@ -296,3 +281,18 @@ components:
       - symbol
       - address
       - chainId
+    SmaApr:
+      type: object
+      properties:
+        aprs:
+          description: List of APR with timestamp for 7 days
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        smaApr:
+          type: number
+          example: 5.1
+          description: Simple Moving Average Apr for last 7 days in db
+      required:
+      - aprs
+      - smaApr
