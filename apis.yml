@@ -190,6 +190,8 @@ apis:
   humanURL: https://docs.lido.fi/integrations/api
   baseURL: https://eth-api.lido.fi
   tags:
+  - Validator
+  tags_raw:
   - Validators
   properties:
   - type: OpenAPI
