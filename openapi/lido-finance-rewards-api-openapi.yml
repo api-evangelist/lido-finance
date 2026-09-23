@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Lido Ethereum APR for Eth and stEth Rewards API
+  title: Lido Reward History Backend Rewards API
   description: ''
-  version: 0.18.0
+  version: 0.17.2
   contact: {}
 servers: []
 tags:
@@ -72,6 +72,8 @@ paths:
           description: Subgraph limits were hit or application ran into a critical error.
       tags:
       - Rewards
+      summary: Rewards controller rewards
+      x-summary-source: derived
 components:
   schemas:
     Rewards:

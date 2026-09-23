@@ -49,6 +49,8 @@ paths:
                 $ref: '#/components/schemas/ProtocolResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find AP rfor eth
+      x-summary-source: derived
   /v1/protocol/eth/price:
     get:
       operationId: ProtocolController_findEthPrice
@@ -62,6 +64,8 @@ paths:
                 $ref: '#/components/schemas/PriceResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find eth price
+      x-summary-source: derived
   /v1/protocol/eth/apr/last:
     get:
       operationId: ProtocolController_findLastAPRforEth
@@ -75,6 +79,8 @@ paths:
                 $ref: '#/components/schemas/ProtocolLastResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find last AP rfor eth
+      x-summary-source: derived
   /v1/protocol/steth/apr:
     get:
       operationId: ProtocolController_findAPRforSTETH
@@ -116,6 +122,8 @@ paths:
                 $ref: '#/components/schemas/ProtocolResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find AP rfor STETH
+      x-summary-source: derived
   /v1/protocol/steth/price:
     get:
       operationId: ProtocolController_findStEthPrice
@@ -129,6 +137,8 @@ paths:
                 $ref: '#/components/schemas/PriceResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find st eth price
+      x-summary-source: derived
   /v1/protocol/steth/stats:
     get:
       operationId: ProtocolController_findStethStats
@@ -142,6 +152,8 @@ paths:
                 $ref: '#/components/schemas/ShortStatsResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find steth stats
+      x-summary-source: derived
   /v1/protocol/steth/apr/last:
     get:
       operationId: ProtocolController_findLastAPRforSTETH
@@ -155,6 +167,8 @@ paths:
                 $ref: '#/components/schemas/ProtocolLastResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find last AP rfor STETH
+      x-summary-source: derived
   /v1/protocol/steth/apr/sma:
     get:
       operationId: ProtocolController_findSmaAPRforSTETH
@@ -168,28 +182,10 @@ paths:
                 $ref: '#/components/schemas/SmaResponse'
       tags:
       - APR for Eth and stEth
+      summary: Protocol controller find sma AP rfor STETH
+      x-summary-source: derived
 components:
   schemas:
-    SmaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SmaApr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    ProtocolLastResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Apr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
     Pagination:
       type: object
       properties:
@@ -212,6 +208,38 @@ components:
       - pageSize
       - itemCount
       - pageCount
+    SmaApr:
+      type: object
+      properties:
+        aprs:
+          description: List of APR with timestamp for 7 days
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        smaApr:
+          type: number
+          example: 5.1
+          description: Simple Moving Average Apr for last 7 days in db
+      required:
+      - aprs
+      - smaApr
+    PriceResponse:
+      type: object
+      properties:
+        price:
+          type: number
+      required:
+      - price
+    SmaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SmaApr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
     ProtocolResponse:
       type: object
       properties:
@@ -227,6 +255,30 @@ components:
       - data
       - meta
       - pagination
+    ProtocolLastResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    Apr:
+      type: object
+      properties:
+        timeUnix:
+          type: number
+          example: 1665663911
+          description: Block unix timestamp in seconds
+        apr:
+          type: number
+          example: 5.1
+          description: Annual percentage rate
+      required:
+      - timeUnix
+      - apr
     ShortStatsResponse:
       type: object
       properties:
@@ -243,27 +295,6 @@ components:
       - uniqueHolders
       - totalStaked
       - marketCap
-    PriceResponse:
-      type: object
-      properties:
-        price:
-          type: number
-      required:
-      - price
-    Apr:
-      type: object
-      properties:
-        timeUnix:
-          type: number
-          example: 1665663911
-          description: Block unix timestamp in seconds
-        apr:
-          type: number
-          example: 5.1
-          description: Annual percentage rate
-      required:
-      - timeUnix
-      - apr
     ProtocolMeta:
       type: object
       properties:
@@ -281,18 +312,3 @@ components:
       - symbol
       - address
       - chainId
-    SmaApr:
-      type: object
-      properties:
-        aprs:
-          description: List of APR with timestamp for 7 days
-          type: array
-          items:
-            $ref: '#/components/schemas/Apr'
-        smaApr:
-          type: number
-          example: 5.1
-          description: Simple Moving Average Apr for last 7 days in db
-      required:
-      - aprs
-      - smaApr

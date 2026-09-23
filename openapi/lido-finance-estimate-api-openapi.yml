@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Lido Ethereum APR for Eth and stEth Estimate API
+  title: Withdrawals Estimate API
   description: ''
-  version: 0.18.0
+  version: 0.26.0
   contact: {}
 servers: []
 tags:
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/EstimateDto'
       tags:
       - Estimate
+      summary: Estimate controller request time V1
+      x-summary-source: derived
 components:
   schemas:
     EstimateDto:

@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Lido Ethereum APR for Eth and stEth NFT API
+  title: Withdrawals NFT API
   description: ''
-  version: 0.18.0
+  version: 0.26.0
   contact: {}
 servers: []
 tags:
@@ -52,6 +52,8 @@ paths:
                 $ref: '#/components/schemas/NFTDto'
       tags:
       - NFT
+      summary: NFT controller nft meta V1
+      x-summary-source: derived
   /v1/nft/{tokenId}/image:
     get:
       operationId: NFTController_nftImageV1
@@ -96,6 +98,8 @@ paths:
                 $ref: '#/components/schemas/NFTDto'
       tags:
       - NFT
+      summary: NFT controller nft image V1
+      x-summary-source: derived
 components:
   schemas:
     NFTDto:

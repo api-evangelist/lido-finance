@@ -1,35 +1,43 @@
 {
   "provider": "lido-finance",
   "sources": [
-    "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
-    "lido-finance-estimate-api-openapi.yml",
-    "lido-finance-nft-api-openapi.yml",
-    "lido-finance-request-time-api-openapi.yml",
-    "lido-finance-rewards-api-openapi.yml",
-    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
-    "lido-finance-validators-api-openapi.yml"
+    "_original/lido-finance-eth-api-openapi-original.json",
+    "_original/lido-finance-reward-history-openapi-original.json",
+    "_original/lido-finance-withdrawal-queue-openapi-original.json"
   ],
   "outputs": [
     "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "lido-finance-rewards-api-openapi.yml",
     "lido-finance-estimate-api-openapi.yml",
     "lido-finance-nft-api-openapi.yml",
     "lido-finance-request-time-api-openapi.yml",
-    "lido-finance-rewards-api-openapi.yml",
-    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
     "lido-finance-validators-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "lido-finance-apr-for-eth-and-steth-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-estimate-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-nft-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-request-time-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-rewards-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
-    "lido-finance-validators-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "lido-finance-eth-api-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-eth-api-openapi-original.json: declared missing tag: APR for Eth and stEth",
+    "lido-finance-eth-api-openapi-original.json: declared missing tag: Swap rate for stETH and wstETH",
+    "lido-finance-reward-history-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-reward-history-openapi-original.json: declared missing tag: Rewards",
+    "lido-finance-withdrawal-queue-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "lido-finance-withdrawal-queue-openapi-original.json: declared missing tag: Estimate",
+    "lido-finance-withdrawal-queue-openapi-original.json: declared missing tag: NFT",
+    "lido-finance-withdrawal-queue-openapi-original.json: declared missing tag: Request Time",
+    "lido-finance-withdrawal-queue-openapi-original.json: declared missing tag: Validators",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "lido-finance-apr-for-eth-and-steth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-estimate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-nft-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-request-time-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-finance-validators-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

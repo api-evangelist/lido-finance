@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Lido Ethereum APR for Eth and stEth Swap rate for stETH and wstETH API
+  title: Lido Ethereum Swap rate for stETH and wstETH API
   description: ''
   version: 0.18.0
   contact: {}
@@ -38,6 +38,8 @@ paths:
                 $ref: '#/components/schemas/SwapResponse'
       tags:
       - Swap rate for stETH and wstETH
+      summary: Swap controller find one inch rate
+      x-summary-source: derived
   /v1/swap/jumper:
     get:
       operationId: SwapController_findJumperRate
@@ -68,6 +70,8 @@ paths:
                 $ref: '#/components/schemas/SwapResponse'
       tags:
       - Swap rate for stETH and wstETH
+      summary: Swap controller find jumper rate
+      x-summary-source: derived
 components:
   schemas:
     SwapResponse:
